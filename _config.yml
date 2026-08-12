@@ -1,0 +1,25 @@
+title: Verida Insights
+description: Trading studies, backtests, and ML pipelines published by CT Lab users.
+url: https://insights.verida.trade
+baseurl: ""
+
+# Jekyll settings
+permalink: /:path/
+markdown: kramdown
+highlighter: rouge
+
+# Posts em posts/{customer}/{slug}.md → URL fica /{customer}/{slug}
+defaults:
+  - scope:
+      path: "posts"
+      type: "pages"
+    values:
+      layout: "post"
+
+# Exclude build artifacts
+exclude:
+  - README.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - .git
