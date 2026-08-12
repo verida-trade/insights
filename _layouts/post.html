@@ -76,5 +76,158 @@
       Content created with generative AI assistance — does not reflect the opinion of verida.trade.
     </p>
   </footer>
+
+  <script>
+  // Chart block renderer — same dark theme as desktop preview.
+  // Reads <pre><code class="language-chart"> blocks and renders on canvas.
+  (function() {
+    function renderChart(canvas, d) {
+      var ctx = canvas.getContext('2d');
+      var w = canvas.offsetWidth, h = canvas.offsetHeight;
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.scale(dpr, dpr);
+      var pad = {l:50,r:10,t:10,b:25};
+      var cw = w - pad.l - pad.r, ch = h - pad.t - pad.b;
+      function px(i, n, min, max) { return pad.l + ((n - min) / (max - min || 1)) * cw; }
+      function py(v, lo, hi) { return pad.t + ch - ((v - lo) / (hi - lo || 1)) * ch; }
+
+      if (d.type === 'equity-curve' || d.type === 'drawdown') {
+        var pts = d.data || [];
+        if (!pts.length) return;
+        var xs = pts.map(function(p){return p[0]});
+        var ys = pts.map(function(p){return p[1]});
+        var xMin = Math.min.apply(null,xs), xMax = Math.max.apply(null,xs);
+        var yMin = Math.min.apply(null,ys), yMax = Math.max.apply(null,ys);
+        if (d.type === 'drawdown') { yMax = 0; }
+        var yPad = (yMax - yMin) * 0.1 || 1;
+        ctx.strokeStyle = d.type === 'drawdown' ? '#f85149' : '#58a6ff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        pts.forEach(function(p, i) {
+          var x = px(i, p[0], xMin, xMax);
+          var y = py(p[1], yMin - yPad, yMax + yPad);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+        if (d.type === 'equity-curve') {
+          ctx.lineTo(px(pts.length-1, xs[xs.length-1], xMin, xMax), pad.t + ch);
+          ctx.lineTo(px(0, xs[0], xMin, xMax), pad.t + ch);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(88,166,255,0.1)';
+          ctx.fill();
+        } else {
+          ctx.lineTo(px(pts.length-1, xs[xs.length-1], xMin, xMax), pad.t);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(248,81,73,0.15)';
+          ctx.fill();
+        }
+      } else if (d.type === 'trade-distribution') {
+        var bins = (d.data || {}).bins || [];
+        if (!bins.length) return;
+        var maxC = Math.max.apply(null, bins.map(function(b){return b[2]}));
+        var bw = cw / bins.length;
+        bins.forEach(function(b, i) {
+          var bh = (b[2] / maxC) * ch;
+          ctx.fillStyle = b[0] >= 0 ? 'rgba(63,185,80,0.6)' : 'rgba(248,81,73,0.6)';
+          ctx.fillRect(pad.l + i * bw + 1, pad.t + ch - bh, bw - 2, bh);
+        });
+      } else if (d.type === 'feature-importance') {
+        var feats = ((d.data || {}).features || []).sort(function(a,b){return b[1]-a[1]});
+        if (!feats.length) return;
+        var maxV = Math.max.apply(null, feats.map(function(f){return f[1]}));
+        var bh = ch / feats.length;
+        feats.forEach(function(f, i) {
+          var fw = (f[1] / maxV) * cw;
+          ctx.fillStyle = 'rgba(136,102,224,0.6)';
+          ctx.fillRect(pad.l, pad.t + i * bh + 1, fw, bh - 2);
+          ctx.fillStyle = '#8b949e';
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(f[0].slice(0, 16), pad.l - 5, pad.t + i * bh + bh / 2);
+          ctx.textAlign = 'left';
+          ctx.fillText(f[1].toFixed(3), pad.l + fw + 5, pad.t + i * bh + bh / 2);
+        });
+      } else if (d.type === 'metric-radar') {
+        var axes = (d.data || {}).axes || [];
+        if (axes.length < 3) return;
+        var cx = w/2, cy = h/2, r = Math.min(w,h)/2 - 40, n = axes.length;
+        function ang(i) { return (Math.PI*2*i)/n - Math.PI/2; }
+        function rpx(i, v) { return cx + Math.cos(ang(i)) * r * v; }
+        function rpy(i, v) { return cy + Math.sin(ang(i)) * r * v; }
+        ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
+        for (var ring = 1; ring <= 4; ring++) {
+          ctx.beginPath();
+          for (var i = 0; i <= n; i++) {
+            var rv = ring / 4;
+            var x = rpx(i % n, rv), y = rpy(i % n, rv);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(88,166,255,0.15)'; ctx.strokeStyle = '#58a6ff'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        axes.forEach(function(a, i) {
+          var v = Math.max(0, Math.min(1, a[1]));
+          var x = rpx(i, v), y = rpy(i, v);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      } else if (d.type === 'candlestick-orders' || d.type === 'indicator-overlay') {
+        var dd = d.data || {};
+        var candles = dd.candles || [];
+        if (!candles.length) return;
+        var orders = dd.orders || [];
+        var ohs = candles.map(function(c){return [c[1],c[2],c[3],c[4]]});
+        var yMin = Math.min.apply(null, ohs.map(function(c){return c[2]}));
+        var yMax = Math.max.apply(null, ohs.map(function(c){return c[1]}));
+        var yLo = yMin - (yMax - yMin) * 0.05, yHi = yMax + (yMax - yMin) * 0.05;
+        var n = candles.length, barW = cw / n;
+        var cpy = function(v) { return pad.t + ch - ((v - yLo) / (yHi - yLo || 1)) * ch; };
+        candles.forEach(function(c, i) {
+          var x = pad.l + i * barW + barW / 2;
+          var up = c[4] >= c[1], col = up ? '#3fb950' : '#f85149';
+          ctx.strokeStyle = col; ctx.lineWidth = Math.max(1, barW * 0.1);
+          ctx.beginPath(); ctx.moveTo(x, cpy(c[2])); ctx.lineTo(x, cpy(c[3])); ctx.stroke();
+          var bw = Math.max(2, barW * 0.7);
+          ctx.fillStyle = col;
+          ctx.fillRect(x - bw/2, Math.min(cpy(c[1]), cpy(c[4])), bw, Math.max(1, Math.abs(cpy(c[4]) - cpy(c[1]))));
+        });
+        orders.forEach(function(o) {
+          var xMinT = Math.min.apply(null, candles.map(function(c){return c[0]}));
+          var xMaxT = Math.max.apply(null, candles.map(function(c){return c[0]}));
+          var xt = pad.l + ((o[0] - xMinT) / (xMaxT - xMinT || 1)) * cw + barW / 2;
+          var y = cpy(o[1]);
+          ctx.fillStyle = o[2].indexOf('buy') >= 0 ? '#3fb950' : '#f85149';
+          ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText(o[2].indexOf('buy') >= 0 ? '▲' : '▼', xt, o[2].indexOf('buy') >= 0 ? y + 12 : y - 12);
+        });
+      }
+    }
+
+    document.querySelectorAll('pre code.language-chart').forEach(function(el) {
+      try {
+        var d = JSON.parse(el.textContent);
+        var pre = el.parentElement;
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'margin:1em 0;border:1px solid var(--border);border-radius:8px;overflow:hidden;';
+        if (d.title) {
+          var t = document.createElement('div');
+          t.style.cssText = 'padding:.5em 1em;font-size:13px;color:var(--dim);background:var(--code-bg);border-bottom:1px solid var(--border);';
+          t.textContent = d.title;
+          wrap.appendChild(t);
+        }
+        var cv = document.createElement('canvas');
+        cv.style.cssText = 'display:block;width:100%;height:220px;';
+        wrap.appendChild(cv);
+        pre.replaceWith(wrap);
+        renderChart(cv, d);
+      } catch(e) {
+        el.style.color = '#f85149';
+        el.textContent = 'Chart render error: ' + e.message;
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
