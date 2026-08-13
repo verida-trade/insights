@@ -4,14 +4,14 @@ url: https://insights.verida.trade
 baseurl: ""
 
 # Jekyll settings
-permalink: /:path/
 markdown: kramdown
 highlighter: rouge
 
-# Posts em posts/{customer}/{slug}.md → URL fica /{customer}/{slug}
+# Páginas em subpastas da raiz são servidas pelo path do arquivo.
+# Ex: /users/abc-123/my-report.md → URL: /users/abc-123/my-report/
 defaults:
   - scope:
-      path: "posts"
+      path: ""
       type: "pages"
     values:
       layout: "post"
