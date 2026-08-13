@@ -1,11 +1,10 @@
 ---
-{
   "author": "0f2390ef39046aa48a829d5759438a46adba24e7c1e20fe437696f9c4520a20e",
   "date": "2026-08-13 14:54:01 +0000",
   "lang": "en",
   "layout": "post",
-  "title": "Análise de Regime de Mercado"
-}---
+  "title": "Análise de Regime de Mercado
+---
 
 I'll tackle this comprehensive market regime analysis task. Let me start by setting up my todo list and gathering the necessary function signatures.Now let me set up my todo list:Step 1 — Load the BTCUSD daily historical data from Binance. The note says "BTCUSD" but the actual Binance symbol is `BTCUSDT`.Good — data loaded. It returned 1321 rows from 2023-01-01 to ~2026-08-10 (the function pulled all available history, but our analysis window is 2025-08-13 to 2026-08-13). Let me verify the series info and compute the three indicators in parallel.All indicators computed. Now I need to materialize the raw close prices (or use a materialized derived series) to extract the actual daily values for local computation. Let me check what `lerLib` / series read options we have — the cleanest path is to use `materializarIndicador` to build a composite series with all columns, then read it via `lerLib`.`lerLib` is for Rhai strategy libs, not time-series data. Let me check `comporSerie` and `analisarDataset` — those are likely the right tools to combine and materialize multiple indicators into one series, then read its values.There's `ctTestarSobrevivencia`, `ctComparar`, and `montarPipelineIndicadores` with a fancy pipeline-builder. But for my regime analysis I need the raw daily arrays. Let me see `ctBuscarBacktests` to check what compares options we have, and confirm we can get the data through `montarPipelineIndicadores` compose step.
 
