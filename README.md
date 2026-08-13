@@ -1,2 +1,0 @@
-# insights
-insights for trading
