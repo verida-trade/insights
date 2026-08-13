@@ -1,4 +1,8 @@
 ---
+permalink: /0f2390ef39046aa48a829d5759438a46adba24e7c1e20fe437696f9c4520a20e/anlise-de-regime-de-mercado/
+---
+
+---
 {
   "author": "0f2390ef39046aa48a829d5759438a46adba24e7c1e20fe437696f9c4520a20e",
   "date": "2026-08-13 03:48:30 +0000",
