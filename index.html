@@ -23,13 +23,35 @@
   <p class="meta">Trading studies published by CT Lab users with generative AI assistance.</p>
 
   <h2>All Posts</h2>
-  <ul>
-  {% for page in site.pages %}
-    {% if page.path contains 'posts/' and page.title %}
-      <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
-    {% endif %}
+  <div class="cards-container">
+  {% assign posts_pages = site.pages | where_exp: "item", "item.path contains 'posts/' and item.title" %}
+  {% assign usuarios = "" | split: "," %}
+  
+  {% for page in posts_pages %}
+    {% assign path_parts = page.path | split: '/' %}
+    {% assign usuario = path_parts[1] %}
+    
+    {% unless usuarios contains usuario %}
+      {% assign usuarios = usuarios | push: usuario %}
+    {% endunless %}
   {% endfor %}
-  </ul>
+
+  {% for usuario in usuarios %}
+    <div class="card" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+      <h2 style="margin-top: 0;">{{ usuario }}</h2>
+      <ul>
+        {% for page in posts_pages %}
+          {% assign path_parts = page.path | split: '/' %}
+          {% assign current_usuario = path_parts[1] %}
+          
+          {% if current_usuario == usuario %}
+            <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
 
   <footer style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
     <p class="meta">
