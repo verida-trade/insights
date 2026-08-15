@@ -1,66 +1,213 @@
 ---
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" dir="ltr">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verida Insights</title>
+  <title>Insights Quantitativos — CT Lab</title>
   <style>
-    :root { --bg: #0d1117; --fg: #c9d1d9; --dim: #8b949e; --accent: #58a6ff; --border: #30363d; }
-    * { box-sizing: border-box; }
-    body { margin:0; padding:2rem; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.7; max-width:800px; margin:0 auto; }
-    h1 { color:#f0f6fc; font-weight:600; }
-    a { color:var(--accent); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .post-list { list-style:none; padding:0; }
-    .post-list li { padding:1rem 0; border-bottom:1px solid var(--border); }
-    .meta { color:var(--dim); font-size:0.85rem; }
+    :root {
+      --color-bg: #09090b;
+      --color-bg-elevated: #18181b;
+      --color-border: #27272a;
+      --color-text: #f8fafc;
+      --color-text-muted: #a1a1aa;
+      --color-text-dim: #71717a;
+      --color-accent: #38bdf8;
+      --color-positive: #22c55e;
+      --color-ink: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header & Nav */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 50;
+    }
+    
+    .brand { font-weight: 600; font-size: 1.125rem; color: var(--color-text); text-decoration: none; display: flex; align-items: center; gap: 8px;}
+    .brand-accent { color: var(--color-accent); }
+    
+    .btn-primary {
+      background: var(--color-text);
+      color: var(--color-ink);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* Layout Main */
+    main { padding: 100px 2rem 4rem; max-width: 1200px; margin: 0 auto; }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 4rem 0; position: relative; }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px; height: 400px;
+      background: var(--color-accent);
+      border-radius: 50%; filter: blur(120px);
+      opacity: 0.1; z-index: -1;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: var(--color-positive);
+      padding: 4px 12px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .badge-pulse { width: 6px; height: 6px; background: var(--color-positive); border-radius: 50%; }
+    
+    h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+    .text-gradient {
+      background: linear-gradient(to right, #f8fafc, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc { color: var(--color-text-muted); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+
+    /* User Sections */
+    .user-group { margin-top: 4rem; }
+    .user-group-title {
+      font-size: 1.25rem; font-weight: 600; color: var(--color-text-dim);
+      border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    
+    .card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex; flex-direction: column;
+    }
+    
+    .card:hover {
+      border-color: var(--color-text-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
+
+    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-category { font-size: 0.75rem; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; }
+    
+    .card-title { font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 1rem; line-height: 1.4; }
+    
+    .card-data {
+      margin-top: auto;
+      background: rgba(0,0,0,0.2);
+      border-radius: 6px; padding: 0.75rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem; color: var(--color-text-muted);
+    }
+    .data-label { color: var(--color-text-dim); }
+    .data-value { color: var(--color-text); font-weight: 500; }
+    .data-value.positive { color: var(--color-positive); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--color-border); text-align: center; padding: 2rem 0; margin-top: 4rem; color: var(--color-text-dim); font-size: 0.875rem; }
   </style>
 </head>
 <body>
-  <h1>Verida Insights</h1>
-  <p class="meta">Trading studies published by CT Lab users with generative AI assistance.</p>
 
-  <h2>All Posts</h2>
-  ---
----
-<div class="cards-container">
-  {% assign usuarios = "" | split: "" %}
-  
-  {% for page in site.pages %}
-    {% if page.path contains 'posts/' and page.title %}
-      {% assign path_parts = page.path | split: '/' %}
-      {% assign usuario = path_parts[1] %}
-      
-      {% unless usuarios contains usuario %}
-        {% assign usuarios = usuarios | push: usuario %}
-      {% endunless %}
-    {% endif %}
-  {% endfor %}
+  <header>
+    <a href="https://verida.trade" class="brand">
+      <span class="brand-accent">CT Lab</span> · Insights
+    </a>
+    <a href="https://verida.trade/pricing" class="btn-primary" target="_blank">Adquirir Licença (82/100)</a>
+  </header>
 
-  {% for usuario in usuarios %}
-    <div class="card" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
-      <h2 style="margin-top: 0;">{{ usuario }}</h2>
-      <ul>
-        {% for page in site.pages %}
-          {% if page.path contains 'posts/' and page.title %}
-            {% assign path_parts = page.path | split: '/' %}
-            {% if path_parts[1] == usuario %}
-              <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+  <main>
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="badge"><div class="badge-pulse"></div> Rede de Pesquisa Ativa</div>
+      <h1>Backtests que <span class="text-gradient">não mentem.</span></h1>
+      <p class="hero-desc">Estudos de microestrutura e análise quantitativa publicados por pesquisadores utilizando o motor de IA local do CT Lab.</p>
+    </section>
+
+    <!-- Jekyll Liquid Logic -->
+    {% assign usuarios = "" | split: "" %}
+    
+    {% for page in site.pages %}
+      {% if page.path contains 'posts/' and page.title %}
+        {% assign path_parts = page.path | split: '/' %}
+        {% assign usuario = path_parts[1] %}
+        
+        {% unless usuarios contains usuario %}
+          {% assign usuarios = usuarios | push: usuario %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    {% for usuario in usuarios %}
+      <div class="user-group">
+        <h2 class="user-group-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Pesquisador: {{ usuario }}
+        </h2>
+        
+        <div class="grid">
+          {% for page in site.pages %}
+            {% if page.path contains 'posts/' and page.title %}
+              {% assign path_parts = page.path | split: '/' %}
+              {% if path_parts[1] == usuario %}
+                
+                <a href="{{ page.url | relative_url }}" class="card">
+                  <div class="card-meta">
+                    <span class="card-category">{{ page.category | default: "Estudo Quantitativo" }}</span>
+                  </div>
+                  <h3 class="card-title">{{ page.title }}</h3>
+                  
+                  <div class="card-data">
+                    <div><span class="data-label">Ativo:</span> <span class="data-value">{{ page.asset | default: "N/A" }}</span></div>
+                    <div><span class="data-label">Período:</span> <span class="data-value">{{ page.timeframe | default: "N/A" }}</span></div>
+                    <div><span class="data-label">Win Rate:</span> <span class="data-value">{{ page.win_rate | default: "--" }}</span></div>
+                    <div><span class="data-label">Profit F.:</span> <span class="data-value positive">{{ page.profit_factor | default: "--" }}</span></div>
+                  </div>
+                </a>
+
+              {% endif %}
             {% endif %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  {% endfor %}
-</div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
 
-  <footer style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
-    <p class="meta">
-      <a href="https://verida.trade">verida.trade</a> ·
-      <a href="https://github.com/verida-trade/ct-lab">CT Lab</a>
-    </p>
+  </main>
+
+  <footer>
+    <p>© 2026 verida.trade. Laboratório de trading guiado por IA.</p>
   </footer>
+
 </body>
 </html>
