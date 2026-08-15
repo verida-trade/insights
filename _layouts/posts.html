@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Insights CT Lab</title>
+  
+  <link rel="icon" type="image/svg+xml" href="https://verida.trade/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    :root {
+      --color-bg: #09090b; --color-bg-elevated: #18181b; --color-border: #27272a;
+      --color-text: #f8fafc; --color-text-muted: #a1a1aa; --color-text-dim: #71717a;
+      --color-accent: #38bdf8; --color-positive: #22c55e; --color-ink: #000000;
+    }
+    
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .btn-primary { background-color: var(--color-text); color: var(--color-ink); transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* ESTILIZAÇÃO AUTOMÁTICA DO TEXTO MARKDOWN (.md) */
+    .markdown-content { font-size: 1.125rem; line-height: 1.75; color: var(--color-text-muted); }
+    .markdown-content h2, .markdown-content h3 { color: var(--color-text); font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .markdown-content h2 { font-size: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+    .markdown-content h3 { font-size: 1.25rem; }
+    .markdown-content p { margin-bottom: 1.5rem; }
+    .markdown-content a { color: var(--color-accent); text-decoration: none; }
+    .markdown-content a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .markdown-content ul, .markdown-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .markdown-content li { margin-bottom: 0.5rem; }
+    .markdown-content img { max-width: 100%; border-radius: 8px; border: 1px solid var(--color-border); margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .markdown-content blockquote { border-left: 4px solid var(--color-accent); padding-left: 1.25rem; font-style: italic; color: var(--color-text-dim); margin: 2rem 0; }
+    .markdown-content code { background: rgba(0,0,0,0.4); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.875em; color: var(--color-accent); border: 1px solid var(--color-border); }
+    .markdown-content pre { background: #000; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5rem; }
+    .markdown-content pre code { background: transparent; padding: 0; color: inherit; border: none; }
+    .markdown-content table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.875rem; }
+    .markdown-content th, .markdown-content td { border: 1px solid var(--color-border); padding: 0.75rem; text-align: left; }
+    .markdown-content th { background-color: var(--color-bg-elevated); color: var(--color-text); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="https://verida.trade/images/logo-verida.svg" width="32" height="32" alt="verida.trade">
+        <span class="text-lg font-semibold text-[var(--color-text)]">CT Lab · Insights</span>
+      </a>
+      <a href="https://verida.trade/pricing" class="btn-primary px-4 py-2 text-sm font-semibold rounded-md hidden sm:block">Adquirir Licença (82/100)</a>
+    </div>
+  </header>
+
+  <!-- CORPO DO ARTIGO -->
+  <main class="flex-grow pt-32 pb-20 mx-auto max-w-3xl w-full px-6">
+    
+    <!-- DASHBOARD CLÍNICO (Cabeçalho do Relatório) -->
+    <header class="mb-12">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-3 py-1">
+        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">{{ page.category }}</span>
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">{{ page.title }}</h1>
+      
+      <!-- Ficha Técnica gerada pelo Front Matter -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)]">
+        <div>
+          <p class="text-xs text-[var(--color-text-dim)] mb-1">Ativo</p>
+          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.asset | default: "N/A" }}</p>
+        </div>
+        <div>
+          <p class="text-xs text-[var(--color-text-dim)] mb-1">Período</p>
+          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.timeframe | default: "N/A" }}</p>
+        </div>
+        <div>
+          <p class="text-xs text-[var(--color-text-dim)] mb-1">Win Rate</p>
+          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.win_rate | default: "--" }}</p>
+        </div>
+        <div>
+          <p class="text-xs text-[var(--color-text-dim)] mb-1">Profit Factor</p>
+          <p class="font-mono text-sm font-bold text-[var(--color-positive)]">{{ page.profit_factor | default: "--" }}</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO MARKDOWN INJETADO AQUI -->
+    <article class="markdown-content">
+      {{ content }}
+    </article>
+
+    <!-- CAIXA DE VENDA FIXA (Call to Action) -->
+    <div class="mt-20 p-8 rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 text-center">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3 class="text-xl font-bold text-[var(--color-text)] mb-3">Pesquise com a mesma precisão</h3>
+      <p class="text-[var(--color-text-muted)] mb-6">Este estudo foi gerado utilizando o motor de IA local do CT Lab. Verifique teses, não confie em opiniões.</p>
+      <a href="https://verida.trade/pricing" class="btn-primary inline-block px-6 py-3 rounded-lg font-semibold shadow-lg">Tornar-se Membro Fundador</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+    <div class="mx-auto max-w-7xl px-6 py-8 flex items-center justify-center">
+      <p class="text-sm text-[var(--color-text-dim)]">© 2026 verida.trade. Laboratório de trading guiado por IA.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
