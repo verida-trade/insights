@@ -1,5 +1,6 @@
 defaults:
   - scope:
       path: "posts"
+      type: "pages"
     values:
       layout: "post"
