@@ -6,156 +6,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insights Quantitativos — CT Lab</title>
+  
+  <link rel="icon" type="image/svg+xml" href="https://verida.trade/favicon.svg">
+
+  <!-- Motor CSS utilitário para renderizar as classes idênticas ao verida.trade -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     :root {
-      --color-bg: #09090b;
-      --color-bg-elevated: #18181b;
-      --color-border: #27272a;
-      --color-text: #f8fafc;
-      --color-text-muted: #a1a1aa;
-      --color-text-dim: #71717a;
-      --color-accent: #38bdf8;
-      --color-positive: #22c55e;
+      /* Mapeamento exato das variáveis do verida.trade */
+      --color-bg: #09090b; /* Fundo escuro */
+      --color-bg-elevated: #18181b; /* Fundo dos cards */
+      --color-bg-card: #27272a; /* Fundo hover */
+      --color-border: #27272a; /* Bordas e divisores */
+      --color-text: #f8fafc; /* Texto principal */
+      --color-text-muted: #a1a1aa; /* Texto secundário */
+      --color-text-dim: #71717a; /* Texto terciário */
+      --color-accent: #38bdf8; /* Azul marca */
+      --color-positive: #22c55e; /* Verde ganho */
+      --color-negative: #ef4444; /* Vermelho perda */
       --color-ink: #000000;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
       background-color: var(--color-bg);
       color: var(--color-text);
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header & Nav */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 64px;
-      background: rgba(9, 9, 11, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      z-index: 50;
-    }
-    
-    .brand { font-weight: 600; font-size: 1.125rem; color: var(--color-text); text-decoration: none; display: flex; align-items: center; gap: 8px;}
-    .brand-accent { color: var(--color-accent); }
-    
-    .btn-primary {
-      background: var(--color-text);
-      color: var(--color-ink);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.9; }
-
-    /* Layout Main */
-    main { padding: 100px 2rem 4rem; max-width: 1200px; margin: 0 auto; }
-
-    /* Hero Section */
-    .hero { text-align: center; padding: 4rem 0; position: relative; }
-    .hero-glow {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px; height: 400px;
-      background: var(--color-accent);
-      border-radius: 50%; filter: blur(120px);
-      opacity: 0.1; z-index: -1;
-    }
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      color: var(--color-positive);
-      padding: 4px 12px; border-radius: 999px;
-      font-size: 0.75rem; font-weight: 600; margin-bottom: 1.5rem;
-    }
-    .badge-pulse { width: 6px; height: 6px; background: var(--color-positive); border-radius: 50%; }
-    
-    h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+    /* Utilitários personalizados extras da identidade */
     .text-gradient {
-      background: linear-gradient(to right, #f8fafc, #38bdf8);
+      background: linear-gradient(to right, #f8fafc, var(--color-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-desc { color: var(--color-text-muted); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
-
-    /* User Sections */
-    .user-group { margin-top: 4rem; }
-    .user-group-title {
-      font-size: 1.25rem; font-weight: 600; color: var(--color-text-dim);
-      border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 8px;
+    
+    .btn-primary {
+      background-color: var(--color-text);
+      color: var(--color-ink);
+      transition: opacity 0.2s;
     }
-
-    /* Cards Grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .btn-primary:hover { opacity: 0.9; }
     
     .card {
-      background: var(--color-bg-elevated);
+      background-color: var(--color-bg-elevated);
       border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-decoration: none;
       transition: all 0.2s ease;
-      display: flex; flex-direction: column;
     }
-    
     .card:hover {
       border-color: var(--color-text-dim);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
     }
-
-    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-    .card-category { font-size: 0.75rem; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; }
-    
-    .card-title { font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 1rem; line-height: 1.4; }
-    
-    .card-data {
-      margin-top: auto;
-      background: rgba(0,0,0,0.2);
-      border-radius: 6px; padding: 0.75rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.75rem; color: var(--color-text-muted);
-    }
-    .data-label { color: var(--color-text-dim); }
-    .data-value { color: var(--color-text); font-weight: 500; }
-    .data-value.positive { color: var(--color-positive); }
-
-    /* Footer */
-    footer { border-top: 1px solid var(--color-border); text-align: center; padding: 2rem 0; margin-top: 4rem; color: var(--color-text-dim); font-size: 0.875rem; }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <header>
-    <a href="https://verida.trade" class="brand">
-      <span class="brand-accent">CT Lab</span> · Insights
-    </a>
-    <a href="https://verida.trade/pricing" class="btn-primary" target="_blank">Adquirir Licença (82/100)</a>
+  <!-- HEADER IDÊNTICO AO PRINCIPAL -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="https://verida.trade/images/logo-verida.svg" width="32" height="32" alt="verida.trade" class="shrink-0">
+        <span class="text-lg font-semibold tracking-tight text-[var(--color-text)]">CT Lab · Insights</span>
+      </a>
+      <a href="https://verida.trade/pricing" class="btn-primary px-4 py-2 text-sm font-semibold rounded-md hidden sm:block">
+        Adquirir Licença (82/100)
+      </a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-glow"></div>
-      <div class="badge"><div class="badge-pulse"></div> Rede de Pesquisa Ativa</div>
-      <h1>Backtests que <span class="text-gradient">não mentem.</span></h1>
-      <p class="hero-desc">Estudos de microestrutura e análise quantitativa publicados por pesquisadores utilizando o motor de IA local do CT Lab.</p>
+  <main class="flex-grow pt-24 pb-20">
+    
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-12 pb-20">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[var(--color-accent)] opacity-[0.07] blur-[120px]"></div>
+      </div>
+      <div class="mx-auto max-w-4xl text-center px-6">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-1.5">
+          <span class="h-2 w-2 rounded-full bg-[var(--color-positive)] animate-pulse"></span>
+          <span class="text-sm text-[var(--color-text-muted)]">Rede de Pesquisa Ativa</span>
+        </div>
+        <h1 class="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl text-[var(--color-text)]">Backtests que <br/><span class="text-gradient">não mentem.</span></h1>
+        <p class="mx-auto mt-6 max-w-2xl text-balance text-lg text-[var(--color-text-muted)]">Estudos de microestrutura e análise quantitativa publicados por pesquisadores utilizando o motor de IA local do CT Lab.</p>
+      </div>
     </section>
 
-    <!-- Jekyll Liquid Logic -->
+    <!-- LÓGICA JEKYLL DE DADOS -->
     {% assign usuarios = "" | split: "" %}
     
     {% for page in site.pages %}
@@ -169,44 +105,78 @@
       {% endif %}
     {% endfor %}
 
-    {% for usuario in usuarios %}
-      <div class="user-group">
-        <h2 class="user-group-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          Pesquisador: {{ usuario }}
-        </h2>
-        
-        <div class="grid">
-          {% for page in site.pages %}
-            {% if page.path contains 'posts/' and page.title %}
-              {% assign path_parts = page.path | split: '/' %}
-              {% if path_parts[1] == usuario %}
-                
-                <a href="{{ page.url | relative_url }}" class="card">
-                  <div class="card-meta">
-                    <span class="card-category">{{ page.category | default: "Estudo Quantitativo" }}</span>
-                  </div>
-                  <h3 class="card-title">{{ page.title }}</h3>
+    <!-- GRID DE ESTUDOS POR PESQUISADOR -->
+    <section class="mx-auto max-w-7xl px-6">
+      {% for usuario in usuarios %}
+        <div class="mb-20">
+          
+          <div class="mb-8 flex items-center gap-3 border-b border-[var(--color-border)] pb-4">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+              <!-- Ícone de Usuário -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)]">Pesquisador: <span class="text-[var(--color-accent)]">{{ usuario }}</span></h2>
+          </div>
+          
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {% for page in site.pages %}
+              {% if page.path contains 'posts/' and page.title %}
+                {% assign path_parts = page.path | split: '/' %}
+                {% if path_parts[1] == usuario %}
                   
-                  <div class="card-data">
-                    <div><span class="data-label">Ativo:</span> <span class="data-value">{{ page.asset | default: "N/A" }}</span></div>
-                    <div><span class="data-label">Período:</span> <span class="data-value">{{ page.timeframe | default: "N/A" }}</span></div>
-                    <div><span class="data-label">Win Rate:</span> <span class="data-value">{{ page.win_rate | default: "--" }}</span></div>
-                    <div><span class="data-label">Profit F.:</span> <span class="data-value positive">{{ page.profit_factor | default: "--" }}</span></div>
-                  </div>
-                </a>
-
+                  <a href="{{ page.url | relative_url }}" class="card group flex flex-col justify-between rounded-xl p-6">
+                    <div>
+                      <div class="mb-4 flex items-center justify-between">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                          <!-- Ícone de Backtest copiado da matriz do verida.trade -->
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        </div>
+                        <span class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-accent)] uppercase tracking-wider">{{ page.category | default: "ESTUDO QUANT" }}</span>
+                      </div>
+                      <h3 class="mb-2 text-lg font-semibold text-[var(--color-text)] line-clamp-2 leading-tight">{{ page.title }}</h3>
+                    </div>
+                    
+                    <!-- DADOS VETORIAIS (Requer Front Matter nos .md) -->
+                    <div class="mt-6 rounded-lg bg-black/30 p-3 text-xs font-mono text-[var(--color-text-muted)] border border-[var(--color-border)]/50">
+                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+                        <span>Ativo:</span> <span class="text-[var(--color-text)]">{{ page.asset | default: "N/A" }}</span>
+                      </div>
+                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+                        <span>Período:</span> <span class="text-[var(--color-text)]">{{ page.timeframe | default: "N/A" }}</span>
+                      </div>
+                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+                        <span>Win Rate:</span> <span class="text-[var(--color-text)]">{{ page.win_rate | default: "--" }}</span>
+                      </div>
+                      <div class="flex justify-between py-1.5">
+                        <span>Profit F.:</span> <span class="text-[var(--color-positive)] font-semibold">{{ page.profit_factor | default: "--" }}</span>
+                      </div>
+                    </div>
+                    
+                    <!-- Call to action Hover -->
+                    <div class="mt-5 flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
+                      Ler relatório completo 
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                  </a>
+                  
+                {% endif %}
               {% endif %}
-            {% endif %}
-          {% endfor %}
+            {% endfor %}
+          </div>
+          
         </div>
-      </div>
-    {% endfor %}
-
+      {% endfor %}
+    </section>
   </main>
 
-  <footer>
-    <p>© 2026 verida.trade. Laboratório de trading guiado por IA.</p>
+  <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+    <div class="mx-auto max-w-7xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <img src="https://verida.trade/images/logo-verida.svg" width="24" height="24" alt="verida.trade" class="grayscale opacity-50">
+        <p class="text-sm text-[var(--color-text-dim)]">© 2026 verida.trade. Laboratório de trading guiado por IA.</p>
+      </div>
+      <a href="https://verida.trade/doctrine" class="text-sm text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors">Doutrina</a>
+    </div>
   </footer>
 
 </body>
