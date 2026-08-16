@@ -157,35 +157,60 @@
       const endIndex = startIndex + itemsPerPage;
       const currentItems = filteredStudies.slice(startIndex, endIndex);
 
-      // Constrói o HTML dos Cards
-      gridContainer.innerHTML = currentItems.map(item => `
-        <a href="${item.url}" class="card group flex flex-col justify-between rounded-xl p-6">
-          <div>
-            <div class="mb-4 flex items-center justify-between">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      // Constrói o HTML dos Cards dinamicamente
+      gridContainer.innerHTML = currentItems.map(item => {
+        
+        // Monta os campos de dados baseados nas variáveis que existem no arquivo
+        let metricsHtml = '';
+        const metricKeys = Object.keys(item.metrics);
+        
+        if (metricKeys.length > 0) {
+          metricsHtml = metricKeys.map((key, index) => {
+            const isLast = index === metricKeys.length - 1;
+            const borderClass = isLast ? '' : 'border-b border-[var(--color-border)]/50';
+            
+            // Embeleza o nome da chave (Ex: "win_rate" vira "Win rate")
+            const formattedKey = key.replace(/_/g, ' ').replace(/^./, str => str.toUpperCase());
+            const val = item.metrics[key];
+            
+            // Destaque visual: pinta de verde se for um número positivo atrelado a "profit" ou "lucro"
+            let valueClass = 'text-[var(--color-text)] font-semibold';
+            if (String(val).includes('%') || !isNaN(val)) {
+              if (parseFloat(val) > 0 && (key.toLowerCase().includes('profit') || key.toLowerCase().includes('lucro'))) {
+                valueClass = 'text-[var(--color-positive)] font-bold';
+              }
+            }
+
+            return `
+              <div class="flex justify-between py-1.5 ${borderClass}">
+                <span class="text-[var(--color-text-dim)]">${formattedKey}:</span> 
+                <span class="${valueClass} text-right ml-4 truncate">${val}</span>
               </div>
-              <span class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-accent)] uppercase tracking-wider">${item.category}</span>
+            `;
+          }).join('');
+        } else {
+          // Se o arquivo .md não tiver nenhuma variável técnica, exibe uma mensagem discreta
+          metricsHtml = '<div class="text-center py-2 text-[var(--color-text-dim)] opacity-50">Sem métricas tabuladas</div>';
+        }
+
+        return `
+          <a href="${item.url}" class="card group flex flex-col justify-between rounded-xl p-6">
+            <div>
+              <div class="mb-4 flex items-center justify-between">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <span class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-accent)] uppercase tracking-wider">${item.category}</span>
+              </div>
+              <h3 class="mb-2 text-lg font-semibold text-[var(--color-text)] line-clamp-2 leading-tight">${item.title}</h3>
+              <p class="text-[var(--color-text-dim)] text-xs mb-4 truncate">Autor: ${item.author}</p>
             </div>
-            <h3 class="mb-2 text-lg font-semibold text-[var(--color-text)] line-clamp-2 leading-tight">${item.title}</h3>
-            <p class="text-[var(--color-text-dim)] text-xs mb-4 truncate">Autor: ${item.author}</p>
-          </div>
-          <div class="mt-auto rounded-lg bg-black/30 p-3 text-xs font-mono text-[var(--color-text-muted)] border border-[var(--color-border)]/50">
-            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-              <span>Ativo:</span> <span class="text-[var(--color-text)]">${item.asset}</span>
+            <div class="mt-auto rounded-lg bg-black/30 p-3 text-xs font-mono text-[var(--color-text-muted)] border border-[var(--color-border)]/50">
+              ${metricsHtml}
             </div>
-            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-              <span>Período:</span> <span class="text-[var(--color-text)]">${item.timeframe}</span>
-            </div>
-            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-              <span>Win Rate:</span> <span class="text-[var(--color-text)]">${item.win_rate}</span>
-            </div>
-            <div class="flex justify-between py-1.5">
-              <span>Profit F.:</span> <span class="text-[var(--color-positive)] font-semibold">${item.profit_factor}</span>
-            </div>
-          </div>
-        </a>
-      `).join('');
+          </a>
+        `;
+      }).join('');
 
       // Atualiza os botões
       pageInfo.innerText = `Página ${currentPage} de ${totalPages}`;
