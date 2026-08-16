@@ -1,0 +1,20 @@
+---
+---
+[
+  {% assign first = true %}
+  {% for page in site.pages %}
+    {% if page.path contains 'posts/' and page.title %}
+      {% if first %}{% assign first = false %}{% else %},{% endif %}
+      {
+        "title": {{ page.title | jsonify }},
+        "url": {{ page.url | relative_url | jsonify }},
+        "author": {{ page.path | split: '/' | slice: 1 | first | jsonify }},
+        "category": {{ page.category | default: "Estudo Quantitativo" | jsonify }},
+        "asset": {{ page.asset | default: "N/A" | jsonify }},
+        "timeframe": {{ page.timeframe | default: "N/A" | jsonify }},
+        "win_rate": {{ page.win_rate | default: "--" | jsonify }},
+        "profit_factor": {{ page.profit_factor | default: "--" | jsonify }}
+      }
+    {% endif %}
+  {% endfor %}
+]
