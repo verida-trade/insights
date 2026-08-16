@@ -10,10 +10,18 @@
         "url": {{ page.url | relative_url | jsonify }},
         "author": {{ page.path | split: '/' | slice: 1 | first | jsonify }},
         "category": {{ page.category | default: "Estudo Quantitativo" | jsonify }},
-        "asset": {{ page.asset | default: "N/A" | jsonify }},
-        "timeframe": {{ page.timeframe | default: "N/A" | jsonify }},
-        "win_rate": {{ page.win_rate | default: "--" | jsonify }},
-        "profit_factor": {{ page.profit_factor | default: "--" | jsonify }}
+        "metrics": {
+          {% assign first_metric = true %}
+          {% assign exclude_keys = "title,category,layout,permalink,author,date,lang,tags,categories,url,path,id,next,previous,content,excerpt,slug,ext,dir,name,draft" | split: "," %}
+          {% for item in page %}
+            {% assign key = item[0] %}
+            {% assign val = item[1] %}
+            {% unless exclude_keys contains key %}
+              {% if first_metric %}{% assign first_metric = false %}{% else %},{% endif %}
+              "{{ key }}": {{ val | jsonify }}
+            {% endunless %}
+          {% endfor %}
+        }
       }
     {% endif %}
   {% endfor %}
