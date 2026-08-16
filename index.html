@@ -77,100 +77,141 @@
     </div>
   </header>
 
-  <main class="flex-grow pt-24 pb-20">
-    
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden pt-12 pb-20">
+<main class="flex-grow pt-24 pb-20">
+    <section class="relative overflow-hidden pt-12 pb-12">
+      <!-- (O fundo e o título continuam iguais ao que já definimos) -->
       <div class="absolute inset-0 -z-10">
         <div class="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[var(--color-accent)] opacity-[0.07] blur-[120px]"></div>
       </div>
       <div class="mx-auto max-w-4xl text-center px-6">
-        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-1.5">
-          <span class="h-2 w-2 rounded-full bg-[var(--color-positive)] animate-pulse"></span>
-          <span class="text-sm text-[var(--color-text-muted)]">Rede de Pesquisa Ativa</span>
-        </div>
         <h1 class="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl text-[var(--color-text)]">Backtests que <br/><span class="text-gradient">não mentem.</span></h1>
-        <p class="mx-auto mt-6 max-w-2xl text-balance text-lg text-[var(--color-text-muted)]">Estudos de microestrutura e análise quantitativa publicados por pesquisadores utilizando o motor de IA local do CT Lab.</p>
       </div>
     </section>
 
-    <!-- LÓGICA JEKYLL DE DADOS -->
-    {% assign usuarios = "" | split: "" %}
-    
-    {% for page in site.pages %}
-      {% if page.path contains 'posts/' and page.title %}
-        {% assign path_parts = page.path | split: '/' %}
-        {% assign usuario = path_parts[1] %}
-        
-        {% unless usuarios contains usuario %}
-          {% assign usuarios = usuarios | push: usuario %}
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
-
-    <!-- GRID DE ESTUDOS POR PESQUISADOR -->
     <section class="mx-auto max-w-7xl px-6">
-      {% for usuario in usuarios %}
-        <div class="mb-20">
-          
-          <div class="mb-8 flex items-center gap-3 border-b border-[var(--color-border)] pb-4">
-            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-              <!-- Ícone de Usuário -->
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <h2 class="text-2xl font-semibold text-[var(--color-text)]">Pesquisador: <span class="text-[var(--color-accent)]">{{ usuario }}</span></h2>
-          </div>
-          
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {% for page in site.pages %}
-              {% if page.path contains 'posts/' and page.title %}
-                {% assign path_parts = page.path | split: '/' %}
-                {% if path_parts[1] == usuario %}
-                  
-                  <a href="{{ page.url | relative_url }}" class="card group flex flex-col justify-between rounded-xl p-6">
-                    <div>
-                      <div class="mb-4 flex items-center justify-between">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                          <!-- Ícone de Backtest copiado da matriz do verida.trade -->
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                        </div>
-                        <span class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-accent)] uppercase tracking-wider">{{ page.category | default: "ESTUDO QUANT" }}</span>
-                      </div>
-                      <h3 class="mb-2 text-lg font-semibold text-[var(--color-text)] line-clamp-2 leading-tight">{{ page.title }}</h3>
-                    </div>
-                    
-                    <!-- DADOS VETORIAIS (Requer Front Matter nos .md) -->
-                    <div class="mt-6 rounded-lg bg-black/30 p-3 text-xs font-mono text-[var(--color-text-muted)] border border-[var(--color-border)]/50">
-                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-                        <span>Ativo:</span> <span class="text-[var(--color-text)]">{{ page.asset | default: "N/A" }}</span>
-                      </div>
-                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-                        <span>Período:</span> <span class="text-[var(--color-text)]">{{ page.timeframe | default: "N/A" }}</span>
-                      </div>
-                      <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
-                        <span>Win Rate:</span> <span class="text-[var(--color-text)]">{{ page.win_rate | default: "--" }}</span>
-                      </div>
-                      <div class="flex justify-between py-1.5">
-                        <span>Profit F.:</span> <span class="text-[var(--color-positive)] font-semibold">{{ page.profit_factor | default: "--" }}</span>
-                      </div>
-                    </div>
-                    
-                    <!-- Call to action Hover -->
-                    <div class="mt-5 flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
-                      Ler relatório completo 
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </div>
-                  </a>
-                  
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          </div>
-          
-        </div>
-      {% endfor %}
+      
+      <!-- Barra de Pesquisa -->
+      <div class="mb-8">
+        <input type="text" id="searchInput" placeholder="Buscar por ativo, título ou pesquisador..." class="w-full md:w-1/2 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] text-[var(--color-text)] px-4 py-3 rounded-lg focus:outline-none focus:border-[var(--color-accent)] transition-colors">
+      </div>
+
+      <!-- O Grid onde o JavaScript vai injetar os cards -->
+      <div id="gridContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+        <div class="text-[var(--color-text-muted)] p-6">Carregando estudos da rede...</div>
+      </div>
+
+      <!-- Controles de Paginação -->
+      <div id="paginationControls" class="flex items-center justify-center gap-4">
+        <button id="btnPrev" class="btn-primary px-4 py-2 text-sm font-semibold rounded-md disabled:opacity-50 disabled:cursor-not-allowed">Anterior</button>
+        <span id="pageInfo" class="text-[var(--color-text-muted)] text-sm font-medium">Página 1</span>
+        <button id="btnNext" class="btn-primary px-4 py-2 text-sm font-semibold rounded-md disabled:opacity-50 disabled:cursor-not-allowed">Próxima</button>
+      </div>
+
     </section>
   </main>
+
+  <!-- Lógica da Paginação Estática -->
+  <script>
+    let allStudies = [];
+    let filteredStudies = [];
+    let currentPage = 1;
+    const itemsPerPage = 12; // Altere para quantos cards quiser por página
+
+    const gridContainer = document.getElementById('gridContainer');
+    const searchInput = document.getElementById('searchInput');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const pageInfo = document.getElementById('pageInfo');
+
+    // 1. Busca os dados no primeiro carregamento
+    async function loadData() {
+      try {
+        const response = await fetch('/api.json');
+        allStudies = await response.json();
+        
+        // Opcional: Inverter para os relatórios mais novos aparecerem primeiro
+        allStudies.reverse(); 
+        
+        filteredStudies = allStudies;
+        renderPage(1);
+      } catch (error) {
+        gridContainer.innerHTML = '<div class="text-[var(--color-negative)]">Erro ao carregar a rede de estudos.</div>';
+      }
+    }
+
+    // 2. Renderiza os cards da página atual
+    function renderPage(page) {
+      currentPage = page;
+      
+      const totalPages = Math.ceil(filteredStudies.length / itemsPerPage);
+      if(totalPages === 0) {
+        gridContainer.innerHTML = '<div class="text-[var(--color-text-muted)] col-span-full">Nenhum estudo encontrado.</div>';
+        pageInfo.innerText = `Página 0 de 0`;
+        btnPrev.disabled = true;
+        btnNext.disabled = true;
+        return;
+      }
+
+      // Calcula os limites do array para a página atual
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentItems = filteredStudies.slice(startIndex, endIndex);
+
+      // Constrói o HTML dos Cards
+      gridContainer.innerHTML = currentItems.map(item => `
+        <a href="${item.url}" class="card group flex flex-col justify-between rounded-xl p-6">
+          <div>
+            <div class="mb-4 flex items-center justify-between">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <span class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-accent)] uppercase tracking-wider">${item.category}</span>
+            </div>
+            <h3 class="mb-2 text-lg font-semibold text-[var(--color-text)] line-clamp-2 leading-tight">${item.title}</h3>
+            <p class="text-[var(--color-text-dim)] text-xs mb-4 truncate">Autor: ${item.author}</p>
+          </div>
+          <div class="mt-auto rounded-lg bg-black/30 p-3 text-xs font-mono text-[var(--color-text-muted)] border border-[var(--color-border)]/50">
+            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+              <span>Ativo:</span> <span class="text-[var(--color-text)]">${item.asset}</span>
+            </div>
+            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+              <span>Período:</span> <span class="text-[var(--color-text)]">${item.timeframe}</span>
+            </div>
+            <div class="flex justify-between py-1.5 border-b border-[var(--color-border)]/50">
+              <span>Win Rate:</span> <span class="text-[var(--color-text)]">${item.win_rate}</span>
+            </div>
+            <div class="flex justify-between py-1.5">
+              <span>Profit F.:</span> <span class="text-[var(--color-positive)] font-semibold">${item.profit_factor}</span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+
+      // Atualiza os botões
+      pageInfo.innerText = `Página ${currentPage} de ${totalPages}`;
+      btnPrev.disabled = currentPage === 1;
+      btnNext.disabled = currentPage === totalPages;
+    }
+
+    // 3. Eventos de Clique e Pesquisa
+    btnPrev.addEventListener('click', () => { if(currentPage > 1) renderPage(currentPage - 1); });
+    btnNext.addEventListener('click', () => { 
+      if(currentPage < Math.ceil(filteredStudies.length / itemsPerPage)) renderPage(currentPage + 1); 
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      filteredStudies = allStudies.filter(study => 
+        study.title.toLowerCase().includes(term) ||
+        study.asset.toLowerCase().includes(term) ||
+        study.author.toLowerCase().includes(term)
+      );
+      renderPage(1); // Volta para a primeira página após pesquisar
+    });
+
+    // Inicia o app
+    loadData();
+  </script>
 
   <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
     <div class="mx-auto max-w-7xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
