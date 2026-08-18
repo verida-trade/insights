@@ -1,10 +1,10 @@
 ---
 author: 0f2390ef39046aa48a829d5759438a46adba24e7c1e20fe437696f9c4520a20e
-date: "2026-08-18 18:31:14 +0000"
+date: "2026-08-18 18:35:40 +0000"
 lang: en
 layout: post
 permalink: /0f2390ef39046aa48a829d5759438a46adba24e7c1e20fe437696f9c4520a20e/backtest-btcusdt-adx-rsi
-title: Backtest BTCUSDT ADX + RSI
+title: Backtest BTCUSDT ADX RSI
 ---
 
 O backtest com as **condições exatas** que você solicitou gerou **apenas 1 trade** em todo o período (dados de 2023 a 2026). As condições são extremamente restritivas:
