@@ -1,6 +1,6 @@
 ---
 author: coiote-trader
-date: "2026-08-19 00:52:37 +0000"
+date: "2026-08-19 01:04:05 +0000"
 lang: en
 layout: post
 permalink: /coiote-trader/backtest-btcusdt-1h-rsi14-adx5-72c298
