@@ -80,26 +80,6 @@
       </div>
       
       <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">{{ page.title }}</h1>
-      
-      <!-- Ficha Técnica gerada pelo Front Matter -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)]">
-        <div>
-          <p class="text-xs text-[var(--color-text-dim)] mb-1">Ativo</p>
-          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.asset | default: "N/A" }}</p>
-        </div>
-        <div>
-          <p class="text-xs text-[var(--color-text-dim)] mb-1">Período</p>
-          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.timeframe | default: "N/A" }}</p>
-        </div>
-        <div>
-          <p class="text-xs text-[var(--color-text-dim)] mb-1">Win Rate</p>
-          <p class="font-mono text-sm font-semibold text-[var(--color-text)]">{{ page.win_rate | default: "--" }}</p>
-        </div>
-        <div>
-          <p class="text-xs text-[var(--color-text-dim)] mb-1">Profit Factor</p>
-          <p class="font-mono text-sm font-bold text-[var(--color-positive)]">{{ page.profit_factor | default: "--" }}</p>
-        </div>
-      </div>
     </header>
 
     <!-- CONTEÚDO MARKDOWN INJETADO AQUI -->
