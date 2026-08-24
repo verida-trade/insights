@@ -131,6 +131,7 @@ Validar se o **Pullback Trend-Follow SMC** (reteste em tendência ativa) possui 
 ---
 
 ### **Heatmap Resumido — PnL Líquido ($)**
+
 | Stop\Target | 1.0R | 1.5R | **2.0R** | 2.5R | 3.0R |
 |-------------|------|------|----------|------|------|
 | **1.0 ATR** | -17k | -17k | -13k | -13k | -12k |

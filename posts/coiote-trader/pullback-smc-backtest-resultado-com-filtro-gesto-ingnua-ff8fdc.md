@@ -19,8 +19,6 @@ fees: "$11.8k"
 gross: "+$7.9k"
 ---
 
----
-
 ## 📊 **BACKTEST RESULTADO — Pullback SMC (Setup: +reg_spread≥2 | Gestão: Ingênua)**
 
 | Métrica | v3 (ATR proxy) | **v4 (reg_spread≥2)** | Status |
