@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLASSIFICAÇÃO SMC — BTCUSDT 15m — Insights CT Lab</title>
+  
+  <link rel="icon" type="image/svg+xml" href="https://verida.trade/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-elevated: #141414;
+      --color-bg-card: #1a1a1a;
+      --color-border: #2a2a2a;
+      --color-text: #f5f5f5;
+      --color-text-muted: #a3a3a3;
+      --color-text-dim: #858585;
+      --color-accent: #f59e0b;
+      --color-accent-hover: #d97706;
+      --color-positive: #22c55e;
+      --color-negative: #ef4444;
+      --color-ink: #0a0a0a;
+    
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", "Fira Code", monospace;
+    }
+    
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .btn-primary { background-color: var(--color-text); color: var(--color-ink); transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* ESTILIZAÇÃO AUTOMÁTICA DO TEXTO MARKDOWN (.md) */
+    .markdown-content { font-size: 1.125rem; line-height: 1.75; color: var(--color-text-muted); }
+    .markdown-content h2, .markdown-content h3 { color: var(--color-text); font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .markdown-content h2 { font-size: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+    .markdown-content h3 { font-size: 1.25rem; }
+    .markdown-content p { margin-bottom: 1.5rem; }
+    .markdown-content a { color: var(--color-accent); text-decoration: none; }
+    .markdown-content a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .markdown-content ul, .markdown-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .markdown-content li { margin-bottom: 0.5rem; }
+    .markdown-content img { max-width: 100%; border-radius: 8px; border: 1px solid var(--color-border); margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .markdown-content blockquote { border-left: 4px solid var(--color-accent); padding-left: 1.25rem; font-style: italic; color: var(--color-text-dim); margin: 2rem 0; }
+    .markdown-content code { background: rgba(0,0,0,0.4); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.875em; color: var(--color-accent); border: 1px solid var(--color-border); }
+    .markdown-content pre { background: #000; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5rem; }
+    .markdown-content pre code { background: transparent; padding: 0; color: inherit; border: none; }
+    .markdown-content table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.875rem; }
+    .markdown-content th, .markdown-content td { border: 1px solid var(--color-border); padding: 0.75rem; text-align: left; }
+    .markdown-content th { background-color: var(--color-bg-elevated); color: var(--color-text); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="https://verida.trade/images/logo-verida.svg" width="32" height="32" alt="verida.trade">
+        <span class="text-lg font-semibold text-[var(--color-text)]">CT Lab · Insights</span>
+      </a>
+      
+    </div>
+  </header>
+
+  <!-- CORPO DO ARTIGO -->
+  <main class="flex-grow pt-32 pb-20 mx-auto max-w-3xl w-full px-6">
+    
+    <!-- DASHBOARD CLÍNICO (Cabeçalho do Relatório) -->
+    <header class="mb-12">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-3 py-1">
+        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">Classificação SMC</span>
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">CLASSIFICAÇÃO SMC — BTCUSDT 15m</h1>
+    </header>
+
+    <!-- CONTEÚDO MARKDOWN INJETADO AQUI -->
+    <article class="markdown-content">
+      <hr />
+
+<h2 id="-classificação-smc--btcusdt-15m-febaug-2025-937k-velas">📊 <strong>CLASSIFICAÇÃO SMC — BTCUSDT 15m (Feb–Aug 2025, 93.7k velas)</strong></h2>
+
+<h3 id="1️⃣-piso-doutrinário--estrutura-do-caminho-vr-por-tercil-de-vol">1️⃣ <strong>PISO DOUTRINÁRIO — Estrutura do Caminho (VR por tercil de vol)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regime</th>
+      <th>VR τ=4</th>
+      <th>VR τ=16</th>
+      <th>VR τ=64</th>
+      <th>Leitura Doutrinária</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Vol ALTA (tercil sup)</strong></td>
+      <td><strong>1.12</strong></td>
+      <td><strong>1.26</strong></td>
+      <td><strong>1.22</strong></td>
+      <td><strong>PERSISTÊNCIA FORTE</strong> — makers empurram preço (trend-follow vence)</td>
+    </tr>
+    <tr>
+      <td><strong>Vol MÉDIA</strong></td>
+      <td>0.98</td>
+      <td>~1.00</td>
+      <td>1.04</td>
+      <td>Neutro / transição</td>
+    </tr>
+    <tr>
+      <td><strong>Vol BAIXA (tercil inf)</strong></td>
+      <td><strong>0.92</strong></td>
+      <td><strong>0.79</strong></td>
+      <td><strong>0.75</strong></td>
+      <td><strong>ANTI-PERSISTÊNCIA</strong> — makers absorvem (mean-rev viável)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Implicação SMC</strong>: Em vol alta, <em>Order Blocks / Breakers</em> tendem a <strong>falhar como reversão</strong> — o preço respeita a direção do fluxo (BOS → continuação). Em vol baixa, <em>Liquidity Sweeps</em> nos extremos do range têm <strong>maior probabilidade de mean-reversion</strong>.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2️⃣-candle-classificado--18-eixos-smc-últimas-100-velas--amostra">2️⃣ <strong>CANDLE CLASSIFICADO — 18 Eixos SMC (últimas 100 velas = amostra)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Eixo</th>
+      <th>Código</th>
+      <th>Leitura SMC</th>
+      <th>Distribuição (q25/q50/q75)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Direção</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">direcao_candle</code></td>
+      <td>-1=vendedor pagou bid / +1=comprador pagou ask</td>
+      <td>-1 / 0 / +1</td>
+    </tr>
+    <tr>
+      <td><strong>Tamanho do Corpo</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">tamanho_corpo</code> 0..3</td>
+      <td>0=pavio só / 3=corpo cheio (convicção taker)</td>
+      <td>1 / 2 / 3</td>
+    </tr>
+    <tr>
+      <td><strong>Pavio Inferior</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">pavio_inferior</code> 0..3</td>
+      <td><strong>Makers defendendo bid</strong> (absorção compradora)</td>
+      <td>1 / 2 / 2</td>
+    </tr>
+    <tr>
+      <td><strong>Pavio Superior</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">pavio_superior</code> 0..3</td>
+      <td><strong>Makers defendendo ask</strong> (absorção vendedora)</td>
+      <td>1 / 2 / 2</td>
+    </tr>
+    <tr>
+      <td><strong>Simetria Pavios</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">simetria_pavios</code> 0..3</td>
+      <td>0=assimétrico (lado único) / 3=simétrico (indecisão)</td>
+      <td>1 / 2 / 3</td>
+    </tr>
+    <tr>
+      <td><strong>Posição Close no Range</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">posicao_close_no_range</code> 0..4</td>
+      <td>0=low / 4=high (onde takers fecharam)</td>
+      <td>1 / 2 / 3</td>
+    </tr>
+    <tr>
+      <td><strong>Regime Spread</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">regime_spread</code> 0..3</td>
+      <td>0=compressão (book fino) / 3=expansão (volatilidade)</td>
+      <td>1 / 1 / 1</td>
+    </tr>
+    <tr>
+      <td><strong>Regime Volume</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">regime_volume</code> 0..4</td>
+      <td>0=seco / 4=explosivo (urgência taker)</td>
+      <td>1 / 1 / 1</td>
+    </tr>
+    <tr>
+      <td><strong>Divergência Esforço×Resultado</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">divergencia_esforco_resultado</code> -2..+2</td>
+      <td><strong>-2=volume alto + corpo pequeno = absorção</strong> (Order Block candidate)</td>
+      <td>-1 / 0 / +1</td>
+    </tr>
+    <tr>
+      <td><strong>Continuidade Direção</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">continuidade_direcao</code> 0..2</td>
+      <td>2=mesma direção 3+ velas (fluxo sustentado)</td>
+      <td>1 / 1 / 2</td>
+    </tr>
+    <tr>
+      <td><strong>Sobreposição Candle Anterior</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">sobreposicao_candle_anterior</code> 0..3</td>
+      <td>3=engolfo / inside bar (transição de liquidez)</td>
+      <td>1 / 1 / 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Padrões SMC Detectáveis via Classificação:</strong></p>
+<ul>
+  <li><strong>Order Block (Bullish)</strong>: <code class="language-plaintext highlighter-rouge">divergencia_esforco_resultado ≤ -1</code> + <code class="language-plaintext highlighter-rouge">pavio_inferior ≥ 2</code> + <code class="language-plaintext highlighter-rouge">tamanho_corpo ≤ 1</code> + <code class="language-plaintext highlighter-rouge">direcao_candle = -1</code> (vendedor pagou bid, mas makers absorveram)</li>
+  <li><strong>Order Block (Bearish)</strong>: <code class="language-plaintext highlighter-rouge">divergencia_esforco_resultado ≤ -1</code> + <code class="language-plaintext highlighter-rouge">pavio_superior ≥ 2</code> + <code class="language-plaintext highlighter-rouge">tamanho_corpo ≤ 1</code> + <code class="language-plaintext highlighter-rouge">direcao_candle = +1</code></li>
+  <li><strong>Breaker Block</strong>: <code class="language-plaintext highlighter-rouge">sobreposicao_candle_anterior = 3</code> (engolfo) + mudança de <code class="language-plaintext highlighter-rouge">regime_spread</code> + <code class="language-plaintext highlighter-rouge">continuidade_direcao = 2</code> na nova direção</li>
+  <li><strong>FVG / Imbalance</strong>: <code class="language-plaintext highlighter-rouge">is_outside_bar = 1</code> + <code class="language-plaintext highlighter-rouge">gap_pct_change ≠ 0</code> + <code class="language-plaintext highlighter-rouge">regime_volume ≥ 2</code> (vácuo de liquidez)</li>
+  <li><strong>Liquidity Sweep</strong>: <code class="language-plaintext highlighter-rouge">pavio_inferior = 3</code> ou <code class="language-plaintext highlighter-rouge">pavio_superior = 3</code> + <code class="language-plaintext highlighter-rouge">regime_volume ≥ 3</code> + <code class="language-plaintext highlighter-rouge">divergencia_esforco_resultado = -2</code> (stops caçados + makers retiram liquidez)</li>
+</ul>
+
+<hr />
+
+<h3 id="3️⃣-swings--bos--choch-via-ct_bop-calibrado-pareto-8020">3️⃣ <strong>SWINGS — BOS / CHoCH (via ct_bop calibrado Pareto 80/20)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coluna</th>
+      <th>Significado SMC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sinal_swing</code></td>
+      <td><strong>-2=Reversão Baixa (CHoCH↓)</strong> / <strong>-1=Pullback Baixa</strong> / <strong>+1=Pullback Alta</strong> / <strong>+2=Reversão Alta (CHoCH↑)</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lado_ct_bop</code></td>
+      <td>Força compradora (+1) / vendedora (-1) / neutro (0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">regiao_ct_bop</code></td>
+      <td>0=zero / 1=intermediário / 2=extremo (quantil rolante)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">virada_ct_bop</code></td>
+      <td>Mudança de lado detectada (-1, 0, +1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Estatísticas</strong>: <code class="language-plaintext highlighter-rouge">sinal_swing ≠ 0</code> ocorre em ~<strong>12-15% das velas</strong> (pullbacks + reversões). <code class="language-plaintext highlighter-rouge">±2</code> (reversões puras) ~<strong>2-3%</strong>.</p>
+
+<hr />
+
+<h3 id="4️⃣-ranges--order-blocks--breaker-blocks-ct_range">4️⃣ <strong>RANGES — ORDER BLOCKS / BREAKER BLOCKS (ct_range)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Métrica</th>
+      <th>Valor</th>
+      <th>Leitura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">range_ativo</code> média</td>
+      <td><strong>7.1%</strong></td>
+      <td>Apenas 7% do tempo em range formal (âncora alto vol + reversão)</td>
+    </tr>
+    <tr>
+      <td>Idade média do range</td>
+      <td><strong>22.6 velas</strong> (~5.6h)</td>
+      <td>Ranges curtos — BTC 15m trend-heavy</td>
+    </tr>
+    <tr>
+      <td>Topo/Fundo médio</td>
+      <td>77k / 76k</td>
+      <td>Níveis onde makers concentraram liquidez (Order Blocks institucionais)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Regra SMC</strong>: Range nasce em <strong>candle âncora</strong> (vol z-score ≥ 3 + movimento prévio ≥ 2 ATR + próxima barra reverte). Morre no <strong>close fora de [fundo, topo]</strong> → rompimento = BOS.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5️⃣-tendência-pós-rompimento--fases-smc-ct_tendencia">5️⃣ <strong>TENDÊNCIA PÓS-Rompimento — FASES SMC (ct_tendencia)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fase</th>
+      <th>Código</th>
+      <th>Leitura SMC</th>
+      <th>Frequência</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Inativo</strong></td>
+      <td>0</td>
+      <td>Sem tendência ativa (dentro de range)</td>
+      <td>~7%</td>
+    </tr>
+    <tr>
+      <td><strong>Impulso</strong></td>
+      <td>1</td>
+      <td><strong>Breakout</strong> — takers cruzam spread no vácuo (FVG)</td>
+      <td>~23%</td>
+    </tr>
+    <tr>
+      <td><strong>Reteste</strong></td>
+      <td>2</td>
+      <td>Preço retorna ao <code class="language-plaintext highlighter-rouge">nivel_rompido</code> (testa Order Block / Breaker)</td>
+      <td>~18%</td>
+    </tr>
+    <tr>
+      <td><strong>Continuação</strong></td>
+      <td>3</td>
+      <td><strong>Trend confirmed</strong> — makers reposicionam liquidez na direção</td>
+      <td>~35%</td>
+    </tr>
+    <tr>
+      <td><strong>Armadilha</strong></td>
+      <td>4</td>
+      <td><strong>Fakeout</strong> — rompimento falha, inverte pro lado oposto</td>
+      <td>~17%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Estado Atual (última vela)</strong>: <code class="language-plaintext highlighter-rouge">tend_ativa=1</code>, <code class="language-plaintext highlighter-rouge">direcao=+1</code> (alta), <code class="language-plaintext highlighter-rouge">fase=1</code> (Impulso), <code class="language-plaintext highlighter-rouge">progresso=1.79</code> (1.79× altura do range acima do topo rompido), <code class="language-plaintext highlighter-rouge">nivel_rompido=76.731</code></p>
+
+<hr />
+
+<h2 id="-mapa-smc-consolidado--como-ler-o-btcusdt-agora">🎯 <strong>MAPA SMC CONSOLIDADO — COMO LER O BTCUSDT AGORA</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────────────────────────────────┐
+│  REGIME ATUAL: Vol ALTA (tercil sup) → VR 1.12-1.35 (PERSISTÊNCIA) │
+├─────────────────────────────────────────────────────────────────┤
+│  ESTRUTURA DE PREÇO (SMC)                                        │
+│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐            │
+│  │  RANGE      │──▶│  BOS ↑      │──▶│  IMPULSO    │  (fase 1)  │
+│  │  (OB zona)  │   │  @ 76.731   │   │  progresso  │  1.79×     │
+│  └─────────────┘   └─────────────┘   └─────────────┘            │
+│       │                  │                  │                    │
+│       ▼                  ▼                  ▼                    │
+│  Order Block       Breaker Block      Continuação /            │
+│  (âncora vol)      (engolfo +        Armadilha (fase 4)         │
+│  absorção)         novo equilíbrio)  17% prob.                  │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h3 id="rótulos-smc-por-contexto-de-volatilidade"><strong>Rótulos SMC por Contexto de Volatilidade</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contexto</th>
+      <th>Setup SMC</th>
+      <th>Prob. Doutrinária</th>
+      <th>Validação Necessária</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Vol ALTA + VR&gt;1</strong></td>
+      <td>Trend-follow: Pullback HL (fase 2→3)</td>
+      <td><strong>ALTA</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ct_tendencia.fase=2</code> + <code class="language-plaintext highlighter-rouge">swing.sinal_swing=+1</code> + <code class="language-plaintext highlighter-rouge">candle.divergencia≥0</code></td>
+    </tr>
+    <tr>
+      <td><strong>Vol ALTA + VR&gt;1</strong></td>
+      <td>Reversão em Order Block</td>
+      <td><strong>BAIXA</strong></td>
+      <td>Makers <em>empurram</em> preço — OB vira Breaker</td>
+    </tr>
+    <tr>
+      <td><strong>Vol BAIXA + VR&lt;1</strong></td>
+      <td>Mean-rev: Liquidity Sweep nos extremos</td>
+      <td><strong>MÉDIA-ALTA</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">range_ativo=1</code> + <code class="language-plaintext highlighter-rouge">candle.pavio=3</code> + <code class="language-plaintext highlighter-rouge">divergencia=-2</code></td>
+    </tr>
+    <tr>
+      <td><strong>Vol BAIXA + VR&lt;1</strong></td>
+      <td>Breakout de range (BOS)</td>
+      <td><strong>BAIXA</strong></td>
+      <td>Vácuo sem makers — armadilha provável (fase 4)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p><strong>Disclaimer:</strong> This content was created with the assistance of generative artificial intelligence. It is the creative material of the author and does not reflect the opinion, position, or endorsement of verida.trade or CT Lab. Not financial advice. verida.trade does not provide investment recommendations, portfolio management, or brokerage services. No predictions or guarantees of future results. Backtests and indicators reflect historical data and do not guarantee future performance. All trading and investment decisions are made solely by the user, who assumes full responsibility for all risks, including potential loss of capital. This material is intended for educational and research purposes only. Before making any financial decision, consult a licensed professional in your jurisdiction.</p>
+</blockquote>
+
+
+    </article>
+
+    <!-- CAIXA DE VENDA FIXA (Call to Action) -->
+    <div class="mt-20 p-8 rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 text-center">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3 class="text-xl font-bold text-[var(--color-text)] mb-3">Pesquise com a mesma precisão</h3>
+      <p class="text-[var(--color-text-muted)] mb-6">Este estudo foi gerado utilizando o motor de IA local do CT Lab. Verifique teses, não confie em opiniões.</p>
+      <a href="https://verida.trade/pricing" class="btn-primary inline-block px-6 py-3 rounded-lg font-semibold shadow-lg">Torne-se membro agora</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+    <div class="mx-auto max-w-7xl px-6 py-8 flex items-center justify-center">
+      <p class="text-sm text-[var(--color-text-dim)]">© 2026 verida.trade. Laboratório de trading guiado por IA.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

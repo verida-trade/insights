@@ -5,6 +5,19 @@ lang: en
 layout: post
 permalink: /coiote-trader/frequncias-smc-btcusdt-15m-43057a
 title: FREQUÊNCIAS SMC — BTCUSDT 15m
+category: "Frequências SMC"
+ativo: "BTCUSDT"
+timeframe: "15m"
+periodo: "Fev–Ago 2025"
+velas: "93.7k"
+pullback_freq: "8-10%"
+sweep_freq: "0.4-0.5%"
+breakout_freq: "2.5-3.5%"
+ob_retest_freq: "1-2%"
+rank_1: "Pullback Trend-Follow"
+rank_2: "Breakout Confirmation"
+rank_3: "Order Block Retest"
+rank_4: "Liquidity Sweep Reversal"
 ---
 
 ---

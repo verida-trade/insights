@@ -5,6 +5,18 @@ lang: en
 layout: post
 permalink: /coiote-trader/pullback-smc-backtest-resultado-com-filtro-gesto-ingnua-ff8fdc
 title: Pullback SMC — BACKTEST RESULTADO com filtro. Gestão Ingênua
+category: "Backtest SMC"
+trades_v3: "281"
+trades_v4: "184"
+win_rate: "48.9%"
+profit_factor: "0.91"
+expectancy: "-$21,21/trade"
+pnl_liquido: "-$3.902"
+max_drawdown: "0.63%"
+avg_win: "$452"
+avg_loss: "-$475"
+fees: "$11.8k"
+gross: "+$7.9k"
 ---
 
 ---

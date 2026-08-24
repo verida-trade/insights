@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} — Insights CT Lab</title>
+  <title>SMC PULLBACK TREND-FOLLOW - BACKTEST RESULTADO — Insights CT Lab</title>
   
   <link rel="icon" type="image/svg+xml" href="https://verida.trade/favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -76,15 +76,169 @@
     <!-- DASHBOARD CLÍNICO (Cabeçalho do Relatório) -->
     <header class="mb-12">
       <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-3 py-1">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">{{ page.category | default: "Estudo Quantitativo" }}</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">Backtest SMC</span>
       </div>
       
-      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">{{ page.title }}</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">SMC PULLBACK TREND-FOLLOW - BACKTEST RESULTADO</h1>
     </header>
 
     <!-- CONTEÚDO MARKDOWN INJETADO AQUI -->
     <article class="markdown-content">
-      {{ content }}
+      <hr />
+
+<h2 id="-smc-pullback-trend-follow-setup-12--backtest-resultado">📊 <strong>SMC PULLBACK TREND-FOLLOW (Setup 1/2) — BACKTEST RESULTADO</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Métrica</th>
+      <th>Valor</th>
+      <th>Piso Doutrinário (Sobrevivência)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Trades</strong></td>
+      <td>948</td>
+      <td>20 momentos × 2 lados = 40</td>
+    </tr>
+    <tr>
+      <td><strong>PnL Bruto</strong></td>
+      <td>+$15,069.63</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Fees Totais</strong></td>
+      <td><strong>$59,899.15</strong></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>PnL Líquido</strong></td>
+      <td><strong>-$44,829.52</strong></td>
+      <td>≥ 0 ❌</td>
+    </tr>
+    <tr>
+      <td><strong>Win Rate</strong></td>
+      <td>40.2%</td>
+      <td>&gt; 50% ❌</td>
+    </tr>
+    <tr>
+      <td><strong>Profit Factor</strong></td>
+      <td>0.83</td>
+      <td>&gt; 1.3 ❌</td>
+    </tr>
+    <tr>
+      <td><strong>Expectancy</strong></td>
+      <td><strong>-$47.29/trade</strong></td>
+      <td>&gt; 0 ❌</td>
+    </tr>
+    <tr>
+      <td><strong>Max Drawdown</strong></td>
+      <td>214%</td>
+      <td>&lt; 15% ❌</td>
+    </tr>
+    <tr>
+      <td><strong>Sharpe</strong></td>
+      <td>0.006</td>
+      <td>&gt; 1.0 ❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Veredito: FALHA ESTRONDOSA</strong> — O setup <strong>não bate o piso de sobrevivência</strong> (EV = -0.0995). Fees destruíram o edge bruto positivo.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="-diagnóstico-da-falha">🔍 <strong>Diagnóstico da Falha</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problema</th>
+      <th>Evidência</th>
+      <th>Causa Raiz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fees &gt; Lucro Bruto</strong></td>
+      <td>$59.9k fees vs $15.1k gross</td>
+      <td>948 trades × position size fixa 1.0 = overtrading</td>
+    </tr>
+    <tr>
+      <td><strong>Win Rate baixo</strong></td>
+      <td>40.2%</td>
+      <td>Filtro de regime (VR vol alta) <strong>não aplicado</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Expectancy negativa</strong></td>
+      <td>-$47.29</td>
+      <td>Stop/trail não protege; saídas por regime falham</td>
+    </tr>
+    <tr>
+      <td><strong>Drawdown absurdo</strong></td>
+      <td>214%</td>
+      <td>Sem gestão de risco adaptativa (Grid v10)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-comparação-com-piso-de-sobrevivência">🎯 <strong>Comparação com Piso de Sobrevivência</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Métrica</th>
+      <th>SMC Pullback</th>
+      <th><strong>Piso (Grid v10 aleatório)</strong></th>
+      <th>Benchmark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EV/trade</td>
+      <td>-$47.29</td>
+      <td><strong>-$0.0995</strong> (par reguas)</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Win Rate</td>
+      <td>40.2%</td>
+      <td>45%</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Profit Factor</td>
+      <td>0.83</td>
+      <td>~1.0 (neutro)</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>MaxDD</td>
+      <td>214%</td>
+      <td>Controlado</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>O setup SMC “puro” com position sizing ingênuo é PIOR que entrada aleatória com gestor adaptativo.</strong></p>
+</blockquote>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p><strong>Disclaimer:</strong> This content was created with the assistance of generative artificial intelligence. It is the creative material of the author and does not reflect the opinion, position, or endorsement of verida.trade or CT Lab. Not financial advice. verida.trade does not provide investment recommendations, portfolio management, or brokerage services. No predictions or guarantees of future results. Backtests and indicators reflect historical data and do not guarantee future performance. All trading and investment decisions are made solely by the user, who assumes full responsibility for all risks, including potential loss of capital. This material is intended for educational and research purposes only. Before making any financial decision, consult a licensed professional in your jurisdiction.</p>
+</blockquote>
+
+
     </article>
 
     <!-- CAIXA DE VENDA FIXA (Call to Action) -->

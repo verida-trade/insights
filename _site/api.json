@@ -1,0 +1,899 @@
+[
+  
+  
+    
+  
+    
+      
+      {
+        "title": "Backtest: BTCUSDT 1h — RSI(14) + ADX(5)",
+        "url": "/coiote-trader/backtest-btcusdt-1h-rsi14-adx5-72c298",
+        "author": "coiote-trader",
+        "category": "Backtest Clássico",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "ativo": "BTCUSDT"
+            
+          
+            
+            
+            
+              ,
+              "timeframe": "1h"
+            
+          
+            
+            
+            
+              ,
+              "periodo": "2025-08-18 a 2026-08-18"
+            
+          
+            
+            
+            
+              ,
+              "trades": "14"
+            
+          
+            
+            
+            
+              ,
+              "win_rate": "35.71%"
+            
+          
+            
+            
+            
+              ,
+              "profit_factor": "0.128"
+            
+          
+            
+            
+            
+              ,
+              "pnl_total": "-$2.724,46 (-27.24%)"
+            
+          
+            
+            
+            
+              ,
+              "max_drawdown": "27.58%"
+            
+          
+            
+            
+            
+              ,
+              "fees": "$2.215,17"
+            
+          
+            
+            
+            
+              ,
+              "conclusao": "Não viável — sinais raros, fees > PnL bruto"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+      ,
+      {
+        "title": "CLASSIFICAÇÃO SMC — BTCUSDT 15m",
+        "url": "/coiote-trader/classificao-smc-btcusdt-15m-c2bb53",
+        "author": "coiote-trader",
+        "category": "Classificação SMC",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "ativo": "BTCUSDT"
+            
+          
+            
+            
+            
+              ,
+              "timeframe": "15m"
+            
+          
+            
+            
+            
+              ,
+              "periodo": "Fev–Ago 2025"
+            
+          
+            
+            
+            
+              ,
+              "velas": "93.7k"
+            
+          
+            
+            
+            
+              ,
+              "vr_vol_alta": "1.26 (τ=16)"
+            
+          
+            
+            
+            
+              ,
+              "vr_vol_baixa": "0.79 (τ=16)"
+            
+          
+            
+            
+            
+              ,
+              "setup_principal": "Pullback Trend-Follow (8-10%)"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+      ,
+      {
+        "title": "FREQUÊNCIAS SMC — BTCUSDT 15m",
+        "url": "/coiote-trader/frequncias-smc-btcusdt-15m-43057a",
+        "author": "coiote-trader",
+        "category": "Frequências SMC",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "ativo": "BTCUSDT"
+            
+          
+            
+            
+            
+              ,
+              "timeframe": "15m"
+            
+          
+            
+            
+            
+              ,
+              "periodo": "Fev–Ago 2025"
+            
+          
+            
+            
+            
+              ,
+              "velas": "93.7k"
+            
+          
+            
+            
+            
+              ,
+              "pullback_freq": "8-10%"
+            
+          
+            
+            
+            
+              ,
+              "sweep_freq": "0.4-0.5%"
+            
+          
+            
+            
+            
+              ,
+              "breakout_freq": "2.5-3.5%"
+            
+          
+            
+            
+            
+              ,
+              "ob_retest_freq": "1-2%"
+            
+          
+            
+            
+            
+              ,
+              "rank_1": "Pullback Trend-Follow"
+            
+          
+            
+            
+            
+              ,
+              "rank_2": "Breakout Confirmation"
+            
+          
+            
+            
+            
+              ,
+              "rank_3": "Order Block Retest"
+            
+          
+            
+            
+            
+              ,
+              "rank_4": "Liquidity Sweep Reversal"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+  
+    
+      ,
+      {
+        "title": "Pullback SMC — BACKTEST RESULTADO com filtro. Gestão Ingênua",
+        "url": "/coiote-trader/pullback-smc-backtest-resultado-com-filtro-gesto-ingnua-ff8fdc",
+        "author": "coiote-trader",
+        "category": "Backtest SMC",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "trades_v3": "281"
+            
+          
+            
+            
+            
+              ,
+              "trades_v4": "184"
+            
+          
+            
+            
+            
+              ,
+              "win_rate": "48.9%"
+            
+          
+            
+            
+            
+              ,
+              "profit_factor": "0.91"
+            
+          
+            
+            
+            
+              ,
+              "expectancy": "-$21,21/trade"
+            
+          
+            
+            
+            
+              ,
+              "pnl_liquido": "-$3.902"
+            
+          
+            
+            
+            
+              ,
+              "max_drawdown": "0.63%"
+            
+          
+            
+            
+            
+              ,
+              "avg_win": "$452"
+            
+          
+            
+            
+            
+              ,
+              "avg_loss": "-$475"
+            
+          
+            
+            
+            
+              ,
+              "fees": "$11.8k"
+            
+          
+            
+            
+            
+              ,
+              "gross": "+$7.9k"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+      ,
+      {
+        "title": "RELATÓRIO EXECUTIVO — Pullback SMC BTCUSDT 15m",
+        "url": "/coiote-trader/relatrio-executivo-pullback-smc-btcusdt-15m-d11403",
+        "author": "coiote-trader",
+        "category": "Relatório Executivo",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "win_rate": "52%"
+            
+          
+            
+            
+            
+              ,
+              "profit_factor": "1.04"
+            
+          
+            
+            
+            
+              ,
+              "expectancy": "+$8,18/trade"
+            
+          
+            
+            
+            
+              ,
+              "pnl_liquido": "+$1.498"
+            
+          
+            
+            
+            
+              ,
+              "max_drawdown": "0,42%"
+            
+          
+            
+            
+            
+              ,
+              "trades": "183"
+            
+          
+            
+            
+            
+              ,
+              "periodo": "Fev–Ago 2025 (6.5 meses)"
+            
+          
+            
+            
+            
+              ,
+              "setup_otimo": "Stop 3.0 ATR / Target 2.0 R"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+      ,
+      {
+        "title": "SMC PULLBACK TREND-FOLLOW - BACKTEST RESULTADO",
+        "url": "/coiote-trader/smc-pullback-trend-follow-backtest-resultado-644390",
+        "author": "coiote-trader",
+        "category": "Backtest SMC",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "trades": "183"
+            
+          
+            
+            
+            
+              ,
+              "win_rate": "52%"
+            
+          
+            
+            
+            
+              ,
+              "profit_factor": "1.04"
+            
+          
+            
+            
+            
+              ,
+              "expectancy": "+$8,18/trade"
+            
+          
+            
+            
+            
+              ,
+              "pnl_liquido": "+$1.498"
+            
+          
+            
+            
+            
+              ,
+              "max_drawdown": "0,42%"
+            
+          
+            
+            
+            
+              ,
+              "setup": "Pullback Trend-Follow (Setup 1/2)"
+            
+          
+            
+            
+            
+              ,
+              "gestao": "Ingênua (fixa)"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+      ,
+      {
+        "title": "SMC PULLBACK TREND — PARAMETER SWEEP RESULTADO",
+        "url": "/coiote-trader/smc-pullback-trend-parameter-sweep-resultado-3e4193",
+        "author": "coiote-trader",
+        "category": "Parameter Sweep",
+        "metrics": {
+          
+          
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+              
+              "melhor_config": "Stop 3.0 ATR / Target 2.0 R"
+            
+          
+            
+            
+            
+              ,
+              "pnl_total": "+$1.498"
+            
+          
+            
+            
+            
+              ,
+              "profit_factor": "1.04"
+            
+          
+            
+            
+            
+              ,
+              "expectancy": "+$8,18/trade"
+            
+          
+            
+            
+            
+              ,
+              "win_rate": "52%"
+            
+          
+            
+            
+            
+              ,
+              "max_drawdown": "0,42%"
+            
+          
+            
+            
+            
+              ,
+              "trades": "183"
+            
+          
+            
+            
+            
+              ,
+              "fees_pct_gross": "88%"
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        }
+      }
+    
+  
+    
+  
+]

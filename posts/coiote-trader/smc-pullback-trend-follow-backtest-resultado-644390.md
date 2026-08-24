@@ -5,6 +5,15 @@ lang: en
 layout: post
 permalink: /coiote-trader/smc-pullback-trend-follow-backtest-resultado-644390
 title: SMC PULLBACK TREND-FOLLOW - BACKTEST RESULTADO
+category: "Backtest SMC"
+trades: "183"
+win_rate: "52%"
+profit_factor: "1.04"
+expectancy: "+$8,18/trade"
+pnl_liquido: "+$1.498"
+max_drawdown: "0,42%"
+setup: "Pullback Trend-Follow (Setup 1/2)"
+gestao: "Ingênua (fixa)"
 ---
 
 ---

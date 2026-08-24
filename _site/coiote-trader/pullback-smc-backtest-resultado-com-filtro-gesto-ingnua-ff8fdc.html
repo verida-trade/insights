@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} — Insights CT Lab</title>
+  <title>Pullback SMC — BACKTEST RESULTADO com filtro. Gestão Ingênua — Insights CT Lab</title>
   
   <link rel="icon" type="image/svg+xml" href="https://verida.trade/favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -76,15 +76,170 @@
     <!-- DASHBOARD CLÍNICO (Cabeçalho do Relatório) -->
     <header class="mb-12">
       <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-3 py-1">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">{{ page.category | default: "Estudo Quantitativo" }}</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">Backtest SMC</span>
       </div>
       
-      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">{{ page.title }}</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] leading-tight mb-8">Pullback SMC — BACKTEST RESULTADO com filtro. Gestão Ingênua</h1>
     </header>
 
     <!-- CONTEÚDO MARKDOWN INJETADO AQUI -->
     <article class="markdown-content">
-      {{ content }}
+      <hr />
+
+<h2 id="-backtest-resultado--pullback-smc-setup-reg_spread2--gestão-ingênua">📊 <strong>BACKTEST RESULTADO — Pullback SMC (Setup: +reg_spread≥2 | Gestão: Ingênua)</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Métrica</th>
+      <th>v3 (ATR proxy)</th>
+      <th><strong>v4 (reg_spread≥2)</strong></th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Trades</strong></td>
+      <td>281</td>
+      <td><strong>184</strong></td>
+      <td>↓ 35% (filtro mais restritivo)</td>
+    </tr>
+    <tr>
+      <td><strong>Win Rate</strong></td>
+      <td>49.1%</td>
+      <td><strong>48.9%</strong></td>
+      <td>↔ Estável</td>
+    </tr>
+    <tr>
+      <td><strong>Profit Factor</strong></td>
+      <td>0.70</td>
+      <td><strong>0.91</strong></td>
+      <td>↑ Melhorou (perto de 1)</td>
+    </tr>
+    <tr>
+      <td><strong>Expectancy</strong></td>
+      <td>-$96.40</td>
+      <td><strong>-$21.21</strong></td>
+      <td>↑ Muito melhor</td>
+    </tr>
+    <tr>
+      <td><strong>PnL Líquido</strong></td>
+      <td>-$27,087</td>
+      <td><strong>-$3,902</strong></td>
+      <td>↑ Menos prejuízo</td>
+    </tr>
+    <tr>
+      <td><strong>Max DD</strong></td>
+      <td>2.86%</td>
+      <td><strong>0.63%</strong></td>
+      <td>↓ Excelente</td>
+    </tr>
+    <tr>
+      <td><strong>Avg Win / Avg Loss</strong></td>
+      <td>$466 / -$639</td>
+      <td><strong>$452 / -$475</strong></td>
+      <td>R:R ~0.95</td>
+    </tr>
+    <tr>
+      <td><strong>Exposição</strong></td>
+      <td>3.2%</td>
+      <td><strong>1.9%</strong></td>
+      <td>↓ Muito baixa</td>
+    </tr>
+    <tr>
+      <td><strong>Fees vs Gross</strong></td>
+      <td>$17.6k vs -$9.5k</td>
+      <td><strong>$11.8k vs +$7.9k</strong></td>
+      <td>↑ Gross positivo!</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-análise-do-filtro-reg_spread--2">🔍 <strong>Análise do Filtro <code class="language-plaintext highlighter-rouge">reg_spread ≥ 2</code></strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspecto</th>
+      <th>Evidência</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Filtro reduziu trades</strong></td>
+      <td>281 → 184 (35% cortados)</td>
+    </tr>
+    <tr>
+      <td><strong>Profit Factor subiu</strong></td>
+      <td>0.70 → 0.91 (quase breakeven)</td>
+    </tr>
+    <tr>
+      <td><strong>Expectancy melhorou 78%</strong></td>
+      <td>-$96 → -$21/trade</td>
+    </tr>
+    <tr>
+      <td><strong>Gross POSITIVO</strong></td>
+      <td>+$7,876 (fees ainda destroem)</td>
+    </tr>
+    <tr>
+      <td><strong>R:R quase 1:1</strong></td>
+      <td>0.95 (stop e target simétricos)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-diagnóstico-final-isolamento-setup">🎯 <strong>DIAGNÓSTICO FINAL (Isolamento Setup)</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Conclusão</th>
+      <th>Evidência</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Setup tem signal</strong></td>
+      <td>Win rate ~49%, PF 0.91, R:R ~1</td>
+    </tr>
+    <tr>
+      <td><strong>Filtro vol funciona</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">reg_spread≥2</code> melhora qualidade vs sem filtro</td>
+    </tr>
+    <tr>
+      <td><strong>Gestão ingênua é o gargalo</strong></td>
+      <td>Fees $11.8k &gt; Gross $7.9k = <strong>overtrading custo fixo</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Exposição 1.9% = capital ocioso 98%</strong></td>
+      <td>Position fixa 1.0 lote sem escala</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-veredito-doutrinário">✅ <strong>VEREDITO DOUTRINÁRIO</strong></h3>
+
+<blockquote>
+  <p><strong>O Setup Pullback SMC + filtro vol tem edge marginal (PF 0.91).</strong></p>
+
+  <p><strong>A gestão ingênua (position fixa, stop/target simétricos, sem adaptação) transforma edge marginal em prejuízo líquido via fees.</strong></p>
+</blockquote>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p><strong>Disclaimer:</strong> This content was created with the assistance of generative artificial intelligence. It is the creative material of the author and does not reflect the opinion, position, or endorsement of verida.trade or CT Lab. Not financial advice. verida.trade does not provide investment recommendations, portfolio management, or brokerage services. No predictions or guarantees of future results. Backtests and indicators reflect historical data and do not guarantee future performance. All trading and investment decisions are made solely by the user, who assumes full responsibility for all risks, including potential loss of capital. This material is intended for educational and research purposes only. Before making any financial decision, consult a licensed professional in your jurisdiction.</p>
+</blockquote>
+
+
     </article>
 
     <!-- CAIXA DE VENDA FIXA (Call to Action) -->

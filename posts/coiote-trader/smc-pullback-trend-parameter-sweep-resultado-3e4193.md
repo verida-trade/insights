@@ -5,6 +5,15 @@ lang: en
 layout: post
 permalink: /coiote-trader/smc-pullback-trend-parameter-sweep-resultado-3e4193
 title: SMC PULLBACK TREND — PARAMETER SWEEP RESULTADO
+category: "Parameter Sweep"
+melhor_config: "Stop 3.0 ATR / Target 2.0 R"
+pnl_total: "+$1.498"
+profit_factor: "1.04"
+expectancy: "+$8,18/trade"
+win_rate: "52%"
+max_drawdown: "0,42%"
+trades: "183"
+fees_pct_gross: "88%"
 ---
 
 ---

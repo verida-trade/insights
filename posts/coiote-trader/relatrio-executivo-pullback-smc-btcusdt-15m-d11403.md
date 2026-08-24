@@ -5,6 +5,15 @@ lang: en
 layout: post
 permalink: /coiote-trader/relatrio-executivo-pullback-smc-btcusdt-15m-d11403
 title: RELATÓRIO EXECUTIVO — Pullback SMC BTCUSDT 15m
+category: "Relatório Executivo"
+win_rate: "52%"
+profit_factor: "1.04"
+expectancy: "+$8,18/trade"
+pnl_liquido: "+$1.498"
+max_drawdown: "0,42%"
+trades: "183"
+periodo: "Fev–Ago 2025 (6.5 meses)"
+setup_otimo: "Stop 3.0 ATR / Target 2.0 R"
 ---
 
 ---

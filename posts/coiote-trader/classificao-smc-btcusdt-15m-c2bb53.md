@@ -5,6 +5,14 @@ lang: en
 layout: post
 permalink: /coiote-trader/classificao-smc-btcusdt-15m-c2bb53
 title: CLASSIFICAÇÃO SMC — BTCUSDT 15m
+category: "Classificação SMC"
+ativo: "BTCUSDT"
+timeframe: "15m"
+periodo: "Fev–Ago 2025"
+velas: "93.7k"
+vr_vol_alta: "1.26 (τ=16)"
+vr_vol_baixa: "0.79 (τ=16)"
+setup_principal: "Pullback Trend-Follow (8-10%)"
 ---
 
 ---

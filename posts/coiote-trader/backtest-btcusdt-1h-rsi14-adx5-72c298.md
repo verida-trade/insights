@@ -5,6 +5,17 @@ lang: en
 layout: post
 permalink: /coiote-trader/backtest-btcusdt-1h-rsi14-adx5-72c298
 title: "Backtest: BTCUSDT 1h — RSI(14) + ADX(5)"
+category: "Backtest Clássico"
+ativo: "BTCUSDT"
+timeframe: "1h"
+periodo: "2025-08-18 a 2026-08-18"
+trades: "14"
+win_rate: "35.71%"
+profit_factor: "0.128"
+pnl_total: "-$2.724,46 (-27.24%)"
+max_drawdown: "27.58%"
+fees: "$2.215,17"
+conclusao: "Não viável — sinais raros, fees > PnL bruto"
 ---
 
 O backtest foi executado com sucesso. Aqui estão os resultados completos com os gráficos solicitados:
