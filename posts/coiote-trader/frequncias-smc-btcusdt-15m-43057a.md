@@ -41,6 +41,7 @@ Baseado nas estatísticas reais das deriveds Premium (`analisarDataset`):
 ## ⚖️ **RISCO/RETORNO POR SETUP — Análise Doutrinária**
 
 ### **1. PULLBACK TREND-FOLLOW** (Maior frequência, regime Vol ALTA)
+
 | Aspecto | Avaliação |
 |---------|-----------|
 | **Regime favorável** | Vol ALTA (VR > 1 → persistência) — *makers empurram preço* |
@@ -54,6 +55,7 @@ Baseado nas estatísticas reais das deriveds Premium (`analisarDataset`):
 ---
 
 ### **2. LIQUIDITY SWEEP REVERSAL** (Rara, regime Vol BAIXA)
+
 | Aspecto | Avaliação |
 |---------|-----------|
 | **Regime favorável** | Vol BAIXA (VR < 1 → anti-persistência) — *makers absorvem* |
@@ -67,6 +69,7 @@ Baseado nas estatísticas reais das deriveds Premium (`analisarDataset`):
 ---
 
 ### **3. BREAKOUT CONFIRMATION** (Média frequência, início de trend)
+
 | Aspecto | Avaliação |
 |---------|-----------|
 | **Regime favorável** | Transição Vol BAIXA → ALTA (range rompe) |
@@ -80,6 +83,7 @@ Baseado nas estatísticas reais das deriveds Premium (`analisarDataset`):
 ---
 
 ### **4. ORDER BLOCK RETEST** (Baixa frequência, transição)
+
 | Aspecto | Avaliação |
 |---------|-----------|
 | **Regime favorável** | Transição vol (âncora forma OB, rompimento muda regime) |
