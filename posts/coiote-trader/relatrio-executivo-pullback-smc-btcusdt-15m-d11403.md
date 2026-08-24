@@ -29,6 +29,7 @@ Validar se o **Pullback Trend-Follow SMC** (reteste em tendência ativa) possui 
 ---
 
 ## 📈 **DADOS & PERÍODO**
+
 | Item | Valor |
 |------|-------|
 | **Ativo** | BTCUSDT (Binance Spot) |
@@ -75,6 +76,7 @@ Validar se o **Pullback Trend-Follow SMC** (reteste em tendência ativa) possui 
 ## ⚙️ **ETAPA 3 — ISOLAMENTO: SETUP vs GESTÃO**
 
 ### **Setup Puro (Entrada/Saída Estrutural)**
+
 | Componente | Regra |
 |------------|-------|
 | **Entrada Long** | `tend_ativa=1` ∧ `tend_fase=2` (reteste) ∧ `tend_dir=+1` ∧ `sinal_swing=+1` |
@@ -82,6 +84,7 @@ Validar se o **Pullback Trend-Follow SMC** (reteste em tendência ativa) possui 
 | **Saída Estrutural** | Fim do reteste (`tend_fase ≠ 2`) ∨ armadilha (`fase=4`) ∨ tendência acaba |
 
 ### **Gestão Ingênua (Fixa — para isolar setup)**
+
 | Parâmetro | Valor Inicial |
 |-----------|---------------|
 | Position Size | 1.0 lote fixo |
@@ -111,6 +114,7 @@ Validar se o **Pullback Trend-Follow SMC** (reteste em tendência ativa) possui 
 ## 🔬 **ETAPA 5 — PARAMETER SWEEP (Otimização Stop/Target)**
 
 ### **Grid Testado:** 5 × 5 = 25 combinações
+
 | Stop ATR | 1.0 | 1.5 | **2.0** | **2.5** | **3.0** |
 | Target R | 1.0 | 1.5 | **2.0** | **2.5** | **3.0** |
 

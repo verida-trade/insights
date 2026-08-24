@@ -78,6 +78,7 @@ fees_pct_gross: "88%"
 3. **Fees fixos** — menos trades (183) com stops largos = menos fees proporcionais
 
 ### **Trade-off:**
+
 | Config | Trades | Win Rate | Avg Win | Avg Loss | Exposição |
 |--------|--------|----------|---------|----------|-----------|
 | 2.0×2.0 | 184 | 47% | $1,474 | -$1,440 | 1.0% |
