@@ -1,12 +1,3 @@
----
-author: coiote-trader
-date: "2026-08-28 16:13:17 +0000"
-lang: en
-layout: post
-permalink: /coiote-trader/relatrio-completo-spike-hunter-no-btcusdt-5m-para-day-trade-futuros-249805
-title: RELATÓRIO COMPLETO — SPIKE HUNTER NO BTCUSDT 5M PARA DAY TRADE FUTUROS
----
-
 # RELATÓRIO COMPLETO — SPIKE HUNTER NO BTCUSDT 5M PARA DAY TRADE FUTUROS
 
 **Período analisado:** 01/08/2025 a 28/08/2025 (7.891 velas de 5min ≈ 27 dias)  
@@ -36,14 +27,17 @@ title: RELATÓRIO COMPLETO — SPIKE HUNTER NO BTCUSDT 5M PARA DAY TRADE FUTUROS
 - **Volume vs OBV: 0.02** — Volume bruto **não explica** OBV (é o *delta* de close que move OBV)
 - **Lead-lag:** Correlação contemporânea forte, **desaparece no lag 1** — OBV **confirma**, não antecipa
 
-### 1.3 Comportamento por Horário (Intraday)
-| Período | Característica do Spike Hunter |
-|---------|--------------------------------|
-| **00:00–06:00 UTC** | Baixa liquidez, bandas estreitas, muitos falsos rompimentos |
-| **07:00–10:00 UTC** | Abertura Europa — expansão de banda, direcionalidade real |
-| **12:00–15:00 UTC** | Overlap NY/Londres — maior volume, trends mais limpos |
-| **15:00–18:00 UTC** | Fechamento Europa — reversões, squeeze frequente |
-| **20:00–23:00 UTC** | Fechamento NY — liquidez caindo, mean-reversion domina |
+### 1.3 Comportamento por Horário (Intraday) — Inferido por Liquidez de Mercado
+
+| Período UTC | Sessão | Característica do Spike Hunter |
+|-------------|--------|--------------------------------|
+| **00:00–06:00** | Ásia | Baixa liquidez, bandas estreitas, muitos falsos rompimentos |
+| **07:00–10:00** | Abertura Europa | Expansão de banda, direcionalidade real |
+| **12:00–15:00** | Overlap NY/Londres | Maior volume, trends mais limpos |
+| **15:00–18:00** | Fechamento Europa | Reversões, squeeze frequente |
+| **20:00–23:00** | Fechamento NY | Liquidez caindo, mean-reversion domina |
+
+> **⚠️ Nota metodológica:** Esta tabela é **inferida por conhecimento de microestrutura de mercado** (sessões de trading), NÃO extraída estatisticamente dos dados. A análise por horário não foi computada empiricamente nesta amostra de 27 dias — trate como heurística a validar.
 
 ---
 
@@ -404,9 +398,5 @@ def get_risk_params(regime, side, atr_current, atr_regime_avg):
 
 **FIM DO RELATÓRIO**  
 *Gerado automaticamente via CT Lab + análise estatística rigorosa*  
-*Doutrina CT: "Ferramenta mede o passado. Decisão é sua."*%  
-
----
-
-> **Disclaimer:** This content was created with the assistance of generative artificial intelligence. It is the creative material of the author and does not reflect the opinion, position, or endorsement of verida.trade or CT Lab. Not financial advice. verida.trade does not provide investment recommendations, portfolio management, or brokerage services. No predictions or guarantees of future results. Backtests and indicators reflect historical data and do not guarantee future performance. All trading and investment decisions are made solely by the user, who assumes full responsibility for all risks, including potential loss of capital. This material is intended for educational and research purposes only. Before making any financial decision, consult a licensed professional in your jurisdiction.
+*Doutrina CT: "Ferramenta mede o passado. Decisão é sua."*% 
 
