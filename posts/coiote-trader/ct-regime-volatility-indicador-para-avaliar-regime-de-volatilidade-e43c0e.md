@@ -11,6 +11,35 @@ title: CT Regime Volatility - Indicador para avaliar regime de volatilidade
 
 ---
 
+## Origem & Processo Criativo
+
+**CT RegVol** — Indicador de Regime de Volatilidade  
+**Autor:** **CT Lab** by **verida.trade**  
+**Data:** Agosto 2026 | Pine Script v6
+
+---
+
+### Como Foi Construído (Humano + IA)
+
+| Etapa | Papel do Humano (Engenheiro Quant CT Lab) | Papel da IA (Assistente) |
+|-------|-------------------------------------------|---------------------------|
+| **1. Definição do problema** | "ATR não serve — preciso medir *regime*, não range. Quero estimador OHLC eficiente, contextualização histórica, persistência." | — |
+| **2. Escolha metodológica** | Selecionou Yang-Zhang (lit. acadêmica), janelas 20/100/252, percentis adaptativos, EWMA RiskMetrics, z-score robusto (IQR). | Validou fórmulas, sugeriu alternativas (GK, Parkinson), alertou sobre limitações (GARCH ≠ EWMA). |
+| **3. Arquitetura do código** | Definiu estrutura: inputs agrupados → funções vetorizadas → cálculos principais → regime → visualização → alertas → documentação. | Escreveu implementação Pine v6 otimizada (funções nativas `ta.*`, sem loops, `max_bars_back`). |
+| **4. Refinamento iterativo** | Testou mentalmente: "isso repinta?", "custa caro?", "EWMA inicializa como?", "percentil trava em 252?". | Corrigiu: `ta.variance` no YZ, inicialização EWMA com variância amostral, `robust_scale = IQR/1.35`, tabela visual. |
+| **5. Doutrina CT** | Impôs: *não gera sinais*, *declara limites*, *teste de sobrevivência obrigatório*, *linguagem de fluxo de ordens*. | Traduzuiu para relatório executivo, cheat sheet, pipeline de validação, avisos de limitação. |
+| **6. Entrega final** | Aprova versão final, assina como CT Lab. | Formata código, relatório, justificativa metodológica. |
+
+---
+
+### Princípio Norteador
+
+> **"IA acelera implementação. Humano define intenção, valida estatística, assume responsabilidade."**
+
+O código **não** foi "gerado por IA" no sentido de *prompt único → resultado final*. Foi **co-construído** em ciclos curtos: especificação → implementação → crítica → refinamento — com o engenheiro quant no volante em todas as decisões de *design estatístico* e *filosofia de produto* (Doutrina CT).
+
+---
+
 ## 1. O Que É
 
 **CT RegVol** é um indicador de **medição de regime de volatilidade realizada** para TradingView (Pine Script v6).  
@@ -695,16 +724,6 @@ if barstate.islast
 | **Percentil precisa histórico** | win_hist=252 → ~252 barras p/ estabilizar | Em ativos novos: aumente win_hist ou aceite ruído |
 | **Percentile_nearest_rank custo** | Pode travar em win_hist>500 | Reduza win_hist ou use aproximação linear |
 | **Anualização** | Fator errado escala valor absoluto | Ratio e z-score são adimensionais — independem do fator |
-
----
-
-## 12. Próximos Passos Recomendados
-
-1. **Adicione ao gráfico** → ajuste `ann_factor` (252/365/52) e `est_type` (YZ/GK)
-2. **Observe 2-3 ciclos** de regime (baixo→normal→alto→baixo) no seu ativo/timeframe
-3. **Defina hipótese de setup** condicional a regime (ex.: "pullback EMA21 só em regime NORMAL com VR>1")
-4. **Rode validação completa**: `ct_medir_estrutura` → `ct_testar_sobrevivencia` → `ct_backtest`
-5. **Só então** opere com capital real — começando pequeno
 
 ---
 
